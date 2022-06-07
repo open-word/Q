@@ -33,8 +33,7 @@ where
 group by DistrictID, ServiceID
 order by DistrictID, ServiceID;
 
-
--- by District, Service
+-- by District, Service rollup
 select 
 	DistrictID, 
 	ServiceID,
