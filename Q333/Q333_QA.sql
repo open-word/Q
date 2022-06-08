@@ -3,48 +3,48 @@ go
 
 -- Grand Total
 select 
-	convert(decimal(8,2),Sum(Weight))							[Sum of Weight],
-	convert(decimal(8,2),Sum(WeightedPerformance))				[Sum of WeightedPerformance],
-	convert(decimal(5,2),Sum(WeightedPerformance)/Sum(Weight))	[Q]
+	convert(decimal(12,4),Sum(Weight))							[Sum of Weight],
+	convert(decimal(12,4),Sum(WeightedPerformance))				[Sum of WeightedPerformance],
+	convert(decimal(12,4),Sum(WeightedPerformance)/Sum(Weight))	[Q]
 from Q333.vPoints;
 
--- by XID
+-- by Service
 select 
-	XID,
-	convert(decimal(8,2),Sum(Weight))							[Sum of Weight],
-	convert(decimal(8,2),Sum(WeightedPerformance))				[Sum of WeightedPerformance],
-	convert(decimal(5,2),Sum(WeightedPerformance)/Sum(Weight))	[Q]
+	ServiceID,
+	convert(decimal(12,4),Sum(Weight))							[Sum of Weight],
+	convert(decimal(12,4),Sum(WeightedPerformance))				[Sum of WeightedPerformance],
+	convert(decimal(12,4),Sum(WeightedPerformance)/Sum(Weight))	[Q]
 from Q333.vPoints
-group by XID 
-order by XID;
+group by ServiceID 
+order by ServiceID;
 
--- by District, Service
+-- by Service, District
 select 
-	XID, 
-	YID,
-	convert(decimal(8,2),Sum(Weight))							[Sum of Weight],
-	convert(decimal(8,2),Sum(WeightedPerformance))				[Sum of WeightedPerformance],
-	convert(decimal(5,2),Sum(WeightedPerformance)/Sum(Weight))	[Q]
+	ServiceID, 
+	DistrictID,
+	convert(decimal(12,4),Sum(Weight))							[Sum of Weight],
+	convert(decimal(12,4),Sum(WeightedPerformance))				[Sum of WeightedPerformance],
+	convert(decimal(12,4),Sum(WeightedPerformance)/Sum(Weight))	[Q]
 from Q333.vPoints
 where
-	XID in (1) and
-	YID in (1) and
-	ZID in (1,2)
-group by XID, YID
-order by XID, YID;
+	ServiceID in (1) and
+	DistrictID in (1) and
+	PeriodID in (1,2)
+group by ServiceID, DistrictID
+order by ServiceID, DistrictID;
 
 -- by District, Service rollup
 select 
-	XID, 
-	YID,
-	ZID,
-	convert(decimal(8,2),Sum(Weight))							[Sum of Weight],
-	convert(decimal(8,2),Sum(WeightedPerformance))				[Sum of WeightedPerformance],
-	convert(decimal(5,4),Sum(WeightedPerformance)/Sum(Weight))	[Q]
+	ServiceID, 
+	DistrictID,
+	PeriodID,
+	convert(decimal(12,4),Sum(Weight))							[Sum of Weight],
+	convert(decimal(12,4),Sum(WeightedPerformance))				[Sum of WeightedPerformance],
+	convert(decimal(12,4),Sum(WeightedPerformance)/Sum(Weight))	[Q]
 from Q333.vPoints
 where
-	XID in (1) and
-	YID in (1) and
-	ZID in (1,2)
-group by rollup(XID, YID, ZID)
-order by XID, YID, ZID;
+	ServiceID in (1) and
+	DistrictID in (1) and
+	PeriodID in (1,2)
+group by rollup(ServiceID, DistrictID, PeriodID)
+order by ServiceID, DistrictID, PeriodID;
