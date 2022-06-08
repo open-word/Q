@@ -8,29 +8,30 @@ go
 --go
 drop view if exists Q333.vPoints;
 drop table if exists Q333.Points;
-drop table if exists Q333.Z;
-drop table if exists Q333.Y;
-drop table if exists Q333.X;
+drop table if exists Q333.Periods;
+drop table if exists Q333.Districts;
+drop table if exists Q333.Services;
 
 
 -- Dimensions.
 
-create table Q333.X(XID int, constraint PK_X primary key (XID));
-create table Q333.Y(YID int, primary key (YID));
-create table Q333.Z(ZID int, primary key (ZID));
+create table Q333.Services(ServiceID int, constraint PK_Services primary key (ServiceID));
+create table Q333.Districts(DistrictID int, constraint PK_Districts primary key (DistrictID));
+create table Q333.Periods(PeriodID int, constraint PK_Periods primary key (PeriodID));
 
-insert Q333.X values (1),(2),(3),(4),(5),(6),(7),(8),(9);
-insert Q333.Y values (1),(2),(3),(4),(5),(6),(7),(8),(9);
-insert Q333.Z values (1),(2),(3),(4),(5),(6),(7),(8),(9);
+
+insert Q333.Services values (1),(2),(3),(4),(5),(6),(7),(8),(9);
+insert Q333.Districts values (1),(2),(3),(4),(5),(6),(7),(8),(9);
+insert Q333.Periods values (1),(2),(3),(4),(5),(6),(7),(8),(9);
 
 -- Fact.
 
 create table Q333.Points
 (
 	PointID int identity,
-	XID int,
-	YID int,
-	ZID int,
+	ServiceID int,
+	DistrictID int,
+	PeriodID int,
 	[Weight] decimal(8,4),
 	Actual decimal(8,4), 
 	[Target] decimal(8,4), 
@@ -39,8 +40,8 @@ create table Q333.Points
 	constraint PK_Points primary key (PointID)
 );
 
-insert Q333.Points (XID, YID, ZID)
-select * from Q333.X, Q333.Y, Q333.Z order by XID, YID, ZID;
+insert Q333.Points (ServiceID, DistrictID, PeriodID)
+select * from Q333.Services, Q333.Districts, Q333.Periods order by ServiceID, DistrictID, PeriodID;
 
 -- Data.
 
