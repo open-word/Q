@@ -8,21 +8,36 @@ go
 --go
 drop view if exists Q333.vPoints;
 drop table if exists Q333.Points;
+
 drop table if exists Q333.Periods;
+drop table if exists Q333.Plans;
+
 drop table if exists Q333.Districts;
 drop table if exists Q333.Services;
+
+drop table if exists Q333.Departments;
+drop table if exists Q333.Regions;
 
 
 -- Dimensions.
 
-create table Q333.Services(ServiceID int, constraint PK_Services primary key (ServiceID));
-create table Q333.Districts(DistrictID int, constraint PK_Districts primary key (DistrictID));
-create table Q333.Periods(PeriodID int, constraint PK_Periods primary key (PeriodID));
+create table Q333.Departments(DepartmentID int, constraint PK_Departments primary key (DepartmentID));
+create table Q333.Services(ServiceID int, DepartmentID int, constraint PK_Services primary key (ServiceID), constraint FK_Services_Departments foreign key (DepartmentID) references Q333.Departments (DepartmentID));
 
+create table Q333.Regions(RegionID int, constraint PK_Regions primary key (RegionID));
+create table Q333.Districts(DistrictID int, RegionID int, constraint PK_Districts primary key (DistrictID), constraint FK_Districts_Regions foreign key (RegionID) references Q333.Regions (RegionID));
 
-insert Q333.Services values (1),(2),(3),(4),(5),(6),(7),(8),(9);
-insert Q333.Districts values (1),(2),(3),(4),(5),(6),(7),(8),(9);
-insert Q333.Periods values (1),(2),(3),(4),(5),(6),(7),(8),(9);
+create table Q333.Plans(PlanID int, constraint PK_Plans primary key (PlanID));
+create table Q333.Periods(PeriodID int, PlanID int, constraint PK_Periods primary key (PeriodID), constraint FK_Periods_Plans foreign key (PlanID) references Q333.Plans (PlanID));
+
+insert Q333.Departments values (1),(2),(3);
+insert Q333.Services values (1,1),(2,1),(3,1),(4,2),(5,2),(6,2),(7,3),(8,3),(9,3);
+
+insert Q333.Regions values (1),(2),(3);
+insert Q333.Districts values (1,1),(2,1),(3,1),(4,2),(5,2),(6,2),(7,3),(8,3),(9,3);
+
+insert Q333.Plans values (1),(2),(3);
+insert Q333.Periods values (1,1),(2,1),(3,1),(4,2),(5,2),(6,2),(7,3),(8,3),(9,3);
 
 -- Fact.
 
@@ -37,11 +52,14 @@ create table Q333.Points
 	[Target] decimal(8,4), 
 	Performance decimal(8,4), 
 	WeightedPerformance decimal(8,4),
-	constraint PK_Points primary key (PointID)
+	constraint PK_Points primary key (PointID),
+	constraint FK_Points_Services foreign key (ServiceID) references Q333.Services (ServiceID),
+	constraint FK_Points_Districts foreign key (DistrictID) references Q333.Districts (DistrictID),
+	constraint FK_Points_Periods foreign key (PeriodID) references Q333.Periods (PeriodID)
 );
 
 insert Q333.Points (ServiceID, DistrictID, PeriodID)
-select * from Q333.Services, Q333.Districts, Q333.Periods order by ServiceID, DistrictID, PeriodID;
+select s.ServiceID, d.DistrictID, p.PeriodID from Q333.Services s, Q333.Districts d, Q333.Periods p order by s.ServiceID, d.DistrictID, p.PeriodID;
 
 -- Data.
 
@@ -72,7 +90,33 @@ end;
 go
 
 create view Q333.vPoints as
-select * from Q333.Points;
+select 
+	dep.DepartmentID [Department ID],
+	ser.ServiceID [Service ID],
+
+	reg.RegionID [Region ID], 
+	dis.DistrictID [District ID],
+
+	ter.PlanID [Plan ID],
+	per.PeriodID [Period ID],
+
+	poi.PointID [Point ID],
+	poi.Weight [Point Weight],
+	poi.Actual [Point Actual],
+	poi.Target [Point Target],
+	poi.Performance [Point Performance],
+	poi.WeightedPerformance [Point Weighted Performance]
+from 
+	Q333.Points poi
+	
+	join Q333.Services ser on poi.ServiceID = ser.ServiceID
+	join Q333.Departments dep on ser.DepartmentID = dep.DepartmentID
+	
+	join Q333.Districts dis on poi.DistrictID = dis.DistrictID
+	join Q333.Regions reg on dis.RegionID = reg.RegionID
+	
+	join Q333.Periods per on poi.PeriodID = per.PeriodID
+	join Q333.Plans ter on per.PlanID = ter.PlanID;
 go
 
 select * from Q333.vPoints;
