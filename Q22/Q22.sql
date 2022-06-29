@@ -1,6 +1,12 @@
-drop table if exists T;
+--create database Q22;
+--go
 
-create table T
+use Q22;
+go
+
+drop table if exists Results;
+
+create table Results
 (
 	Partner nvarchar(10),
 	Indicator nvarchar(15),
@@ -10,13 +16,13 @@ create table T
 );
 
 -- The performance for an indicator is consistent across all budget (Partner) slices.
-insert T (Partner, Indicator, Budget, Performance) values
+insert Results (Partner, Indicator, Budget, Performance) values
 	('Partner A', 'Indicator 1', 10, 0.50),
 	('Partner A', 'Indicator 2', 20, 1.50),
 	('Partner B', 'Indicator 1', 30, 0.50),
 	('Partner B', 'Indicator 2', 40, 1.50);
 
-select * from T;
+select * from Results;
 
 -- By Indicator, Partner
 
@@ -25,7 +31,7 @@ select
 	Partner, 
 	sum(WeightedPerformance)/sum(Budget) [Q] 
 from 
-	T 
+	Results 
 group by rollup (
 	Indicator,
 	Partner);
@@ -37,9 +43,9 @@ select
 	Indicator,
 	sum(WeightedPerformance)/sum(Budget) [Q] 
 from 
-	T 
+	Results
 group by rollup (
 	Partner,
 	Indicator);
 
-drop table T;
+--drop table Results;
