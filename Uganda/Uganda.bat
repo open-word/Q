@@ -16,6 +16,11 @@ sqlcmd -i 5.2-YB.sql
 sqlcmd -i 5.3-PYB.sql
 sqlcmd -i 5.4-PAYB.sql
 sqlcmd -i 5.5-PADYB.sql
+sqlcmd -i 6.1-I.sql
+sqlcmd -i 6.2-YI.sql
+sqlcmd -i 6.3-PYR.sql
+sqlcmd -i 6.4-PAYR.sql
+sqlcmd -i 6.5-PADYR.sql
 
 
 sqlcmd -i 8.1-QA.sql

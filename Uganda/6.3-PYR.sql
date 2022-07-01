@@ -3,9 +3,9 @@ go
 
 create Table PYR
 (
-	ProgrammeID nvarchar(25),
+	ProgrammeID int,
 	YearID int,
-	IndicatorID nchar(5),
+	IndicatorID int,
 	IndicatorPoints float,
 	Budget decimal(18,4),
 	Performance decimal(18,4),
@@ -19,10 +19,14 @@ go
 insert
 	PYR (ProgrammeID, YearID, IndicatorID, IndicatorPoints)
 select
-	*
+	P.ProgrammeID,
+	YI.YearID,
+	YI.IndicatorID,
+	YI.IndicatorPoints
 from
-	P
-	join YI on P.ProgrammeID like '%'+substring(YI.IndicatorID,1,2)+'%';
+	I
+	join YI on I.IndicatorID = YI.IndicatorID
+	join P on substring(I.NDP3Reference,1,2) = p.NDP3Reference;
 
 -- Allocate the PY budget using the IndicatorPoints.
 -- Simulate Performance using RandomNumbers between 0.75 and 1.25.
