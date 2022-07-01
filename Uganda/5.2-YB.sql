@@ -12,20 +12,20 @@ create Table YB
 go
 
 -- Allocate Points.
-insert YB (YearID, Points) values
-	(2020, 60797.80),
-	(2021, 59408.80),
-	(2022, 67037.80),
-	(2023, 69035.80),
-	(2024, 81158.80);
+insert YB (YearID, Points) values 
+	(1, 60797.80),
+	(2, 59408.80),
+	(3, 67037.80),
+	(4, 69035.80),
+	(5, 81158.80);
 
 -- Allocate Budget using Points.
 update 
-	yb
+	YB
 set 
-	yb.Budget = yb2.Share * b.Budget
+	YB.Budget = YB2.Share * B.Budget
 from 
-	YB yb
+	YB
 	join 
 	(
 		select 
@@ -33,19 +33,10 @@ from
 			(YB.Points/sum(YB.Points) over ()) [Share] 
 		from YB
 	) 
-	yb2 on yb.YearID = yb2.YearID
-	cross join B b;
+	YB2 on YB.YearID = YB2.YearID
+	cross join B;
 
 --select * from YB;
 
 select '5.2'
 go
-
---select 
---	YearID,
---	sum(Budget)
---from 
---	YB
---group by
---	rollup(YearID);
-

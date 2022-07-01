@@ -1,9 +1,9 @@
-use Understanding;
+use Uganda;
 go
 
 create Table PY
 (
-	ProgrammeID nvarchar(25),
+	ProgrammeID int,
 	YearID int,
 	constraint PK_PY primary key (ProgrammeID, YearID),
 	constraint FK_PY_P foreign key (ProgrammeID) references P (ProgrammeID),
@@ -11,8 +11,7 @@ create Table PY
 );
 go
 
-insert
-	PY
+insert PY (ProgrammeID, YearID)
 select
 	P.ProgrammeID,
 	Y.YearID
