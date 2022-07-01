@@ -8,7 +8,7 @@ select
 into
 	PYQ
 from
-	PAYR
+	PMYR
 group by rollup(
 	ProgrammeID,
 	YearID);

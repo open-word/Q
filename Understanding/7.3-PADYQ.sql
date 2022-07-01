@@ -3,17 +3,21 @@ go
 
 select
 	ProgrammeID,
+	ActorID,
+	DistrictID,
 	YearID,
 	convert(decimal(14,4), sum(WeightedPerformance)/sum(Budget))	[Q]
 into
-	PYQ
+	PADYQ
 from
-	PAYR
+	PADYR
 group by rollup(
 	ProgrammeID,
+	ActorID,
+	DistrictID,
 	YearID);
 
---select * from PYQ;
+--select * from PADYQ;
 
-select '7.1';
+select '7.3';
 go

@@ -12,7 +12,7 @@ insert P (ProgrammeID) values
 	('Programme 01'),
 	('Programme 02');
 
---select * from PA;
+--select * from PM;
 
 select '1.1'
 go
