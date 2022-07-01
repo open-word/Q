@@ -4,7 +4,7 @@ go
 create table YI
 (
 	YearID int,
-	IndicatorID nchar(5),
+	IndicatorID int,
 	IndicatorPoints float,
 	constraint PK_YI primary key (YearID, IndicatorID),
 	constraint FK_YI_Y foreign key (YearID) references Y (YearID),
@@ -15,7 +15,9 @@ go
 insert
 	YI
 select
-	*
+	Y.YearID,
+	I.IndicatorID,
+	I.IndicatorPoints
 from
 	Y
 	cross join I;

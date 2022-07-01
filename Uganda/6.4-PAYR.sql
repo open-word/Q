@@ -3,10 +3,10 @@ go
 
 create Table PAYR
 (
-	ProgrammeID nvarchar(25),
-	ActorID nvarchar(25),
+	ProgrammeID int,
+	ActorID int,
 	YearID int,
-	IndicatorID nchar(5),
+	IndicatorID int,
 	IndicatorPoints float,
 	Budget decimal(18,4),
 	Performance decimal(18,4),
