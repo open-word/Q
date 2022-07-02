@@ -5,7 +5,7 @@ create Table YB
 (
 	YearID int,
 	Points float,
-	Budget decimal(18,4),
+	Budget decimal(18,8),
 	constraint PK_YB primary key (YearID),
 	constraint FK_YB_Y foreign key (YearID) references Y (YearID)
 );

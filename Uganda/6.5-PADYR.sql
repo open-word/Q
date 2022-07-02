@@ -9,9 +9,9 @@ create Table PADYR
 	YearID int,
 	IndicatorID int,
 	IndicatorPoints float,
-	Budget decimal(18,4),
-	Performance decimal(18,4),
-	WeightedPerformance as convert(decimal(18,4), Budget * Performance),
+	Budget decimal(18,8),
+	Performance decimal(18,8),
+	WeightedPerformance as convert(decimal(18,8), Budget * Performance),
 	constraint PK_PADYR primary key (ProgrammeID, ActorID, DistrictID, YearID, IndicatorID),
 	constraint FK_PADYR_PADY foreign key (ProgrammeID, ActorID, DistrictID, YearID) references PADY (ProgrammeID, ActorID, DistrictID, YearID),
 	constraint FK_PADYR_PAYR foreign key (ProgrammeID, ActorID, YearID, IndicatorID) references PAYR (ProgrammeID, ActorID, YearID, IndicatorID)
