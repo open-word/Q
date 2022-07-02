@@ -4,7 +4,7 @@ go
 create Table B
 (
 	BID nchar(25),
-	Budget decimal(18,4),
+	Budget decimal(18,8),
 	constraint PK_B primary key (BID)
 );
 go

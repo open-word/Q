@@ -7,7 +7,7 @@ create Table PAYB
 	ActorID int,
 	YearID int,
 	Points float,
-	Budget decimal(18,4),
+	Budget decimal(18,8),
 	constraint PK_PAYB primary key (ProgrammeID, ActorID, YearID),
 	constraint FK_PAYB_PAY foreign key (ProgrammeID, ActorID, YearID) references PAY (ProgrammeID, ActorID, YearID)
 );

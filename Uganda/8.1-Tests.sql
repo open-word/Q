@@ -13,18 +13,18 @@ create table Tests
 	constraint PT_Tests primary key (TestID)
 );
 
-print '************************************************************'
-print 'Sum of Budget'
-print '************************************************************'
+--print '************************************************************'
+--print 'Sum of Budget'
+--print '************************************************************'
 
-declare @SumB decimal(18,4)				= (select round(sum(Budget),0) from B);
-declare @SumYB decimal(18,4)			= (select round(sum(Budget),0) from YB);
-declare @SumPYB decimal(18,4)			= (select round(sum(Budget),0) from PYB);
-declare @SumPAYB decimal(18,4)			= (select round(sum(Budget),0) from PAYB);
-declare @SumPADYB decimal(18,4)			= (select round(sum(Budget),0) from PADYB);
-declare @SumPYRBudget decimal(18,4)		= (select round(sum(Budget),0) from PYR);
-declare @SumPAYRBudget decimal(18,4)	= (select round(sum(Budget),0) from PAYR);
-declare @SumPADYRBudget decimal(18,4)	= (select round(sum(Budget),0) from PADYR);
+declare @SumB decimal(18,8)				= (select round(sum(Budget),0) from B);
+declare @SumYB decimal(18,8)			= (select round(sum(Budget),0) from YB);
+declare @SumPYB decimal(18,8)			= (select round(sum(Budget),0) from PYB);
+declare @SumPAYB decimal(18,8)			= (select round(sum(Budget),0) from PAYB);
+declare @SumPADYB decimal(18,8)			= (select round(sum(Budget),0) from PADYB);
+declare @SumPYRBudget decimal(18,8)		= (select round(sum(Budget),0) from PYR);
+declare @SumPAYRBudget decimal(18,8)	= (select round(sum(Budget),0) from PAYR);
+declare @SumPADYRBudget decimal(18,8)	= (select round(sum(Budget),0) from PADYR);
 
 insert Tests (Category, Name, Result) values ('Sum of Budget', 'SumYB = SumB', iif(@SumYB = @SumB,1,0));
 insert Tests (Category, Name, Result) values ('Sum of Budget', 'SumPYB = SumB', iif(@SumPYB = @SumB,1,0));
