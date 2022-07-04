@@ -35,7 +35,8 @@ drop table if exists D;
 drop table if exists A;
 drop table if exists P;
 
---drop table if exists RN;
+drop sequence if exists sRN;
+drop table if exists RN;
 
 go
 
