@@ -17,5 +17,5 @@ insert Y (YearID, Name, Reference) values
 
 --select * from Y;
 
-select '2.1'
+select '1.2'
 go

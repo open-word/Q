@@ -23,12 +23,7 @@ order by
 	P.ProgrammeID,
 	Y.YearID;
 
-update PY set Budget =  3 where ProgrammeID = 1 and YearID = 1;
-update PY set Budget =  7 where ProgrammeID = 1 and YearID = 2;
-update PY set Budget = 12 where ProgrammeID = 2 and YearID = 1;
-update PY set Budget = 24 where ProgrammeID = 2 and YearID = 2;
-
 --select * from PY;
 
-select '2.2'
+select '2.1'
 go

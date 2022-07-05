@@ -71,3 +71,6 @@ where
 insert Tests (Name, Result) values ('QTest', iif(@QTest=0,'Pass','Fail'));
 
 select * from Tests;
+
+select '6.1'
+go

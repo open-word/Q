@@ -39,4 +39,3 @@ order by
 	PYIA.SectorID, 
 	PYIA.IndicatorID, 
 	PYIA.ActorID;
-
