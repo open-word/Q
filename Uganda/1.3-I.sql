@@ -18,5 +18,5 @@ insert I (IndicatorID, Name, Reference) values
 
 --select * from I;
 
-select '3.1'
+select '1.3'
 go

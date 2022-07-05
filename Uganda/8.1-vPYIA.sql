@@ -37,5 +37,5 @@ go
 
 --select * from vPYIA;
 
-select '6.1'
+select '7.1'
 go
