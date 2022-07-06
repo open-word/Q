@@ -15,7 +15,11 @@ insert [AS] (ActorID, SectorID) values
 	(1,1),
 	(2,1),
 	(3,2),
-	(4,2);
+	(4,2),
+	(5,1),
+	(6,2),
+	(7,1),
+	(8,2);
 
 --select * from AS;
 

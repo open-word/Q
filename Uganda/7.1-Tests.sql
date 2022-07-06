@@ -15,62 +15,26 @@ create table Tests
 -- Performance
 declare @PerformanceTest bit;
 select @PerformanceTest = count(1) from
-	(select YearID, IndicatorID, Performance from PYI) a 
+	(select ProgrammeID, YearID, IndicatorID, Performance from PYIPerformance) a 
 		full outer join
-	(select YearID, IndicatorID, Performance from PYIA) b 
-		on a.YearID = b.YearID and a.IndicatorID = b.IndicatorID and a.Performance = b.Performance
+	(select ProgrammeID, YearID, IndicatorID, Performance from PYIASBudgetPerformance) b 
+		on a.ProgrammeID = b.ProgrammeID and a.YearID = b.YearID and a.IndicatorID = b.IndicatorID and a.Performance = b.Performance
 where
 	a.Performance is null or b.Performance is null;
 insert Tests (Name, Result) values ('PerformanceTest', iif(@PerformanceTest=0,'Pass','Fail'));
 
--- PYBudget
-declare @PYBudgetTest bit;
-select @PYBudgetTest = count(1) from
-	(select ProgrammeID, YearID, sum(Budget) [PYBudget] from PY group by ProgrammeID, YearID) a 
+-- Budget
+declare @BudgetTest bit;
+select @BudgetTest = count(1) from
+	(select ProgrammeID, YearID, SectorID, Budget [PYSBudget] from PYSBudget) a 
 		full outer join
-	(select ProgrammeID, YearID, sum(Budget) [PYBudget] from PYI group by ProgrammeID, YearID) b 
-		on a.ProgrammeID = b.ProgrammeID and a.YearID = b.YearID and a.PYBudget = b.PYBudget 
-		full outer join
-	(select ProgrammeID, YearID, sum(Budget) [PYBudget] from PYIA group by ProgrammeID, YearID) c 
-		on a.ProgrammeID = c.ProgrammeID and a.YearID = c.YearID and a.PYBudget = c.PYBudget
+	(select ProgrammeID, YearID, SectorID, sum(Budget) [PYSBudget] from PYIASBudgetPerformance group by ProgrammeID, YearID, SectorID) b 
+		on a.ProgrammeID = b.ProgrammeID and a.YearID = b.YearID and a.SectorID = b.SectorID and a.PYSBudget = b.PYSBudget 
 where
-	a.PYBudget is null or b.PYBudget is null or c.PYBudget is null;
-insert Tests (Name, Result) values ('PYBudgetTest', iif(@PYBudgetTest=0,'Pass','Fail'));
-
--- PYIBudget
-declare @PYIBudgetTest bit;
-select @PYIBudgetTest = count(1) from
-	(select ProgrammeID, YearID, IndicatorID, sum(Budget) [PYIBudget] from PYI group by ProgrammeID, YearID, IndicatorID) a 
-		full outer join
-	(select ProgrammeID, YearID, IndicatorID, sum(Budget) [PYIBudget] from PYIA group by ProgrammeID, YearID, IndicatorID) b 
-		on a.ProgrammeID = b.ProgrammeID and a.YearID = b.YearID and a.IndicatorID = b.IndicatorID and a.PYIBudget = b.PYIBudget
-where
-	a.PYIBudget is null or b.PYIBudget is null;
-insert Tests (Name, Result) values ('PYIBudgetTest', iif(@PYIBudgetTest=0,'Pass','Fail'));
-
--- PYIWeightedPerformance
-declare @PYIWeightedPerformanceTest bit;
-select @PYIWeightedPerformanceTest = count(1) from
-	(select ProgrammeID, YearID, IndicatorID, sum(WeightedPerformance) [PYIWeightedPerformance] from PYI group by ProgrammeID, YearID, IndicatorID) a 
-		full outer join
-	(select ProgrammeID, YearID, IndicatorID, sum(WeightedPerformance) [PYIWeightedPerformance] from PYIA group by ProgrammeID, YearID, IndicatorID) b 
-		on a.ProgrammeID = b.ProgrammeID and a.YearID = b.YearID and a.IndicatorID = b.IndicatorID and a.PYIWeightedPerformance = b.PYIWeightedPerformance
-where
-	a.PYIWeightedPerformance is null or b.PYIWeightedPerformance is null;
-insert Tests (Name, Result) values ('PYIWeightedPerformanceTest', iif(@PYIWeightedPerformanceTest=0,'Pass','Fail'));
-
--- Q
-declare @QTest bit;
-select @QTest = count(1) from
-	(select ProgrammeID, YearID, IndicatorID, sum(WeightedPerformance)/sum(Budget) [Q] from PYI group by ProgrammeID, YearID, IndicatorID) a 
-		full outer join
-	(select ProgrammeID, YearID, IndicatorID, sum(WeightedPerformance)/sum(Budget) [Q] from PYIA group by ProgrammeID, YearID, IndicatorID) b 
-		on a.ProgrammeID = b.ProgrammeID and a.YearID = b.YearID and a.IndicatorID = b.IndicatorID and a.Q = b.Q
-where
-	a.Q is null or b.Q is null;
-insert Tests (Name, Result) values ('QTest', iif(@QTest=0,'Pass','Fail'));
+	a.PYSBudget is null or b.PYSBudget is null;
+insert Tests (Name, Result) values ('BudgetTest', iif(@BudgetTest=0,'Pass','Fail'));
 
 select * from Tests;
 
-select '6.1'
+select '7.1'
 go

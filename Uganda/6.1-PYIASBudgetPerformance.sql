@@ -61,11 +61,22 @@ from
 				a.YearID = b.YearID and
 				a.SectorID = b.SectorID
 	) t on
-	PYIASBudgetPerformance.ProgrammeID = t.ProgrammeID and
-	PYIASBudgetPerformance.YearID = t.YearID and
-	PYIASBudgetPerformance.IndicatorID = t.IndicatorID and
-	PYIASBudgetPerformance.ActorID = t.ActorID and
-	PYIASBudgetPerformance.SectorID = t.SectorID;
+		PYIASBudgetPerformance.ProgrammeID = t.ProgrammeID and
+		PYIASBudgetPerformance.YearID = t.YearID and
+		PYIASBudgetPerformance.IndicatorID = t.IndicatorID and
+		PYIASBudgetPerformance.ActorID = t.ActorID and
+		PYIASBudgetPerformance.SectorID = t.SectorID;
+
+-- Allocate Performance.
+update PYIASBudgetPerformance
+set
+	PYIASBudgetPerformance.Performance = PYIPerformance.Performance
+from
+	PYIASBudgetPerformance join
+	PYIPerformance on 
+		PYIASBudgetPerformance.ProgrammeID = PYIPerformance.ProgrammeID and 
+		PYIASBudgetPerformance.YearID = PYIPerformance.YearID and 
+		PYIASBudgetPerformance.IndicatorID = PYIPerformance.IndicatorID;
 
 --select * from PYIASBudgetPerformance;
 

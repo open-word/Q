@@ -42,20 +42,6 @@ order by
 	T.YearID,
 	T.IndicatorID;
 
-update 
-	PYIPerformance
-set 
-	Performance = case
-					when ProgrammeID = 1 and YearID = 1 and IndicatorID = 1 then 0.60
-					when ProgrammeID = 1 and YearID = 1 and IndicatorID = 2 then 1.30
-					when ProgrammeID = 1 and YearID = 2 and IndicatorID = 1 then 0.90
-					when ProgrammeID = 1 and YearID = 2 and IndicatorID = 2 then 1.20
-					when ProgrammeID = 2 and YearID = 1 and IndicatorID = 3 then 0.70
-					when ProgrammeID = 2 and YearID = 1 and IndicatorID = 4 then 1.20
-					when ProgrammeID = 2 and YearID = 2 and IndicatorID = 3 then 1.30
-					when ProgrammeID = 2 and YearID = 2 and IndicatorID = 4 then 1.10
-				end;
-
 --select * from PYIPerformance;
 
 select '3.02'

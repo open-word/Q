@@ -24,7 +24,6 @@ sqlcmd -i 3.05-PYSBudget.sql
 sqlcmd -i 4.1-PYIA.sql
 sqlcmd -i 5.1-PYIAS.sql
 sqlcmd -i 6.1-PYIASBudgetPerformance.sql
-
-REM sqlcmd -i 6.1-Tests.sql
-REM sqlcmd -i 7.1-vPYIA.sql
+sqlcmd -i 7.1-Tests.sql
+sqlcmd -i 8.1-vPYIAS.sql
 PAUSE

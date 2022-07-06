@@ -13,10 +13,14 @@ create table A
 go
 
 insert A (ActorID, Name, Acronym, Reference) values
- ( 1,'Actor 1.1',	'A1.1', '1.1'),
- ( 2,'Actor 1.2',	'A1.2', '1.2'),
- ( 3,'Actor 2.1',	'A2.1', '2.1'),
- ( 4,'Actor 2.2',	'A2.2', '2.2');
+ ( 1,'Actor 1',	'A1', '1'),
+ ( 2,'Actor 2',	'A2', '2'),
+ ( 3,'Actor 3',	'A3', '3'),
+ ( 4,'Actor 4',	'A4', '4'),
+ ( 5,'Actor 5',	'A5', '5'),
+ ( 6,'Actor 6',	'A6', '6'),
+ ( 7,'Actor 7',	'A7', '7'),
+ ( 8,'Actor 8',	'A8', '8')
 
 --select * from A;
 

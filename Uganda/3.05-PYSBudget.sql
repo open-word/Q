@@ -24,14 +24,8 @@ order by
 	PYS.YearID,
 	PYS.SectorID;
 
-update PYSBudget set Budget =  10 where ProgrammeID = 1 and YearID = 1 and SectorID = 1;
-update PYSBudget set Budget =  100 where ProgrammeID = 1 and YearID = 1 and SectorID = 2;
-update PYSBudget set Budget =  1000 where ProgrammeID = 1 and YearID = 2 and SectorID = 1;
-update PYSBudget set Budget =  10000 where ProgrammeID = 1 and YearID = 2 and SectorID = 2;
-update PYSBudget set Budget =  100000 where ProgrammeID = 2 and YearID = 1 and SectorID = 1;
-update PYSBudget set Budget =  1000000 where ProgrammeID = 2 and YearID = 1 and SectorID = 2;
-update PYSBudget set Budget =  10000000 where ProgrammeID = 2 and YearID = 2 and SectorID = 1;
-update PYSBudget set Budget =  100000000 where ProgrammeID = 2 and YearID = 2 and SectorID = 2;
+update PYSBudget set Budget =  ProgrammeID * SectorID * YearID * 1000;
+
 
 --select * from PYSBudget;
 

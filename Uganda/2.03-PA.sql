@@ -11,16 +11,19 @@ create Table PA
 );
 go
 
-insert PA (ProgrammeID, ActorID)
-select
-	P.ProgrammeID,
-	A.ActorID
-from
-	P
-	cross join A
-order by
-	P.ProgrammeID,
-	A.ActorID;
+insert PA (ProgrammeID, ActorID) values
+	(1,1),
+	(1,2),
+	(1,3),
+	(1,4),
+	(2,1),
+	(2,2),
+	(2,3),
+	(2,4),
+	(3,5),
+	(3,6),
+	(4,7),
+	(4,8);
 
 --select * from PA;
 

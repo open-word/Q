@@ -1,6 +1,8 @@
 use Uganda;
 go
 
+drop view if exists VPYIAS;
+
 drop table if exists PYIASBudgetPerformance;
 
 drop table if exists PYIAS;
