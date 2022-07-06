@@ -26,9 +26,9 @@ insert Tests (Name, Result) values ('PerformanceTest', iif(@PerformanceTest=0,'P
 -- Budget
 declare @BudgetTest bit;
 select @BudgetTest = count(1) from
-	(select ProgrammeID, YearID, SectorID, Budget [PYSBudget] from PYSBudget) a 
+	(select ProgrammeID, YearID, SectorID, convert(decimal(18,4),Budget) [PYSBudget] from PYSBudget) a 
 		full outer join
-	(select ProgrammeID, YearID, SectorID, sum(Budget) [PYSBudget] from PYIASBudgetPerformance group by ProgrammeID, YearID, SectorID) b 
+	(select ProgrammeID, YearID, SectorID, convert(decimal(18,4),sum(Budget)) [PYSBudget] from PYIASBudgetPerformance group by ProgrammeID, YearID, SectorID) b 
 		on a.ProgrammeID = b.ProgrammeID and a.YearID = b.YearID and a.SectorID = b.SectorID and a.PYSBudget = b.PYSBudget 
 where
 	a.PYSBudget is null or b.PYSBudget is null;

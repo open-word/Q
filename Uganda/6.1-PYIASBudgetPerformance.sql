@@ -33,8 +33,36 @@ order by
 	PYIAS.ActorID,
 	PYIAS.SectorID;
 
--- Allocate BudgetPoints.
-update PYIASBudgetPerformance set BudgetPoints = 1;
+-- Select RNIDs.
+declare @T table (ProgrammeID int, YearID int, IndicatorID int, ActorID int, SectorID int, RNID int);
+insert @T (ProgrammeID, YearID, IndicatorID, ActorID, SectorID, RNID)
+select
+	PYIAS.ProgrammeID,
+	PYIAS.YearID,
+	PYIAS.IndicatorID,
+	PYIAS.ActorID,
+	PYIAS.SectorID,
+	next value for sRN over (order by PYIAS.ProgrammeID, PYIAS.YearID, PYIAS.IndicatorID, PYIAS.ActorID)
+from
+	PYIAS
+order by
+	PYIAS.ProgrammeID,
+	PYIAS.YearID,
+	PYIAS.IndicatorID;
+
+-- Use RandomNumbers for BudgetPoints.
+update PYIASBudgetPerformance
+set
+	PYIASBudgetPerformance.BudgetPoints = RN.RN_010_090
+from
+	PYIASBudgetPerformance
+	join @T T on 
+		PYIASBudgetPerformance.ProgrammeID = T.ProgrammeID and 
+		PYIASBudgetPerformance.YearID = T.YearID and
+		PYIASBudgetPerformance.IndicatorID = T.IndicatorID and
+		PYIASBudgetPerformance.ActorID = T.ActorID and
+		PYIASBudgetPerformance.SectorID = T.SectorID
+	join RN on T.RNID = RN.RNID;
 
 -- Allocate Budget.
 update PYIASBudgetPerformance
@@ -82,22 +110,3 @@ from
 
 select '6.1'
 go
-
---select 
---	PYIA.ProgrammeID,
---	PYIA.YearID,
---	A.SectorID,
---	PYIA.IndicatorID,
---	PYIA.ActorID,
---	PYIA.BudgetPoints,
---	PYIA.Budget,
---	PYIA.Performance,
---	PYIA.WeightedPerformance
---from 
---	PYIA join A on PYIA.ActorID = A.ActorID
---order by
---	PYIA.ProgrammeID,
---	PYIA.YearID,
---	A.SectorID,
---	PYIA.IndicatorID,
---	PYIA.ActorID;
