@@ -9,7 +9,6 @@ create Table PYI
 	constraint PK_PYI primary key (ProgrammeID, YearID, IndicatorID),
 	constraint FK_PYI_PY foreign key (ProgrammeID, YearID) references PY (ProgrammeID, YearID),
 	constraint FK_PYI_PI foreign key (ProgrammeID, IndicatorID) references PI (ProgrammeID, IndicatorID),
-	constraint FK_PYI_YI foreign key (YearID, IndicatorID) references YI (YearID, IndicatorID)
 );
 go
 
@@ -21,7 +20,6 @@ select
 from
 	PY
 	join PI on PY.ProgrammeID = PI.ProgrammeID
-	join YI on PY.YearID = YI.YearID and PI.IndicatorID = YI.IndicatorID
 order by
 	PY.ProgrammeID,
 	PY.YearID,

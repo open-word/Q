@@ -9,9 +9,8 @@ create table PYIAS
 	ActorID int,
 	SectorID int,
 	constraint PK_PYIAS primary key (ProgrammeID, YearID, IndicatorID, ActorID, SectorID),
-	constraint FK_PYIAS_PYI foreign key (ProgrammeID, YearID, IndicatorID) references PYI (ProgrammeID, YearID, IndicatorID),
-	constraint FK_PYIAS_PAS foreign key (ProgrammeID, ActorID, SectorID) references PAS (ProgrammeID, ActorID, SectorID),
-	constraint FK_PYIAS_PYS foreign key (ProgrammeID, YearID, SectorID) references PYS (ProgrammeID, YearID, SectorID)
+	constraint FK_PYIAS_PYIA foreign key (ProgrammeID, YearID, IndicatorID, ActorID) references PYIA (ProgrammeID, YearID, IndicatorID, ActorID),
+	constraint FK_PYIAS_AS foreign key (ActorID, SectorID) references [AS] (ActorID, SectorID)
 );
 go
 
