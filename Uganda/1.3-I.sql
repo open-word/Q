@@ -14,7 +14,11 @@ insert I (IndicatorID, Name, Reference) values
 	(1  , 'Indicator 01.01', '01.01' ),
 	(2  , 'Indicator 01.02', '01.02' ),
 	(3  , 'Indicator 02.01', '02.01' ),
-	(4  , 'Indicator 02.02', '02.02' );
+	(4  , 'Indicator 02.02', '02.02' ),
+	(5  , 'Indicator 03.01', '03.01' ),
+	(6  , 'Indicator 03.02', '03.02' ),
+	(7  , 'Indicator 04.01', '04.01' ),
+	(8  , 'Indicator 04.02', '04.02' );
 
 --select * from I;
 

@@ -16,7 +16,9 @@ go
 
 insert P (ProgrammeID, Name, Acronym, TLA, Reference) values
  ( 1,'Programme 01', 'P1',	'P01',	'01'),
- ( 2,'Programme 02', 'P2',	'P02',	'02');
+ ( 2,'Programme 02', 'P2',	'P02',	'02'),
+ ( 3,'Programme 03', 'P3',	'P03',	'03'),
+ ( 4,'Programme 04', 'P4',	'P04',	'04');
 go
 
 --select * from P;
