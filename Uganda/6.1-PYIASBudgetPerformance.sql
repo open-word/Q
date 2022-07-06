@@ -34,7 +34,7 @@ order by
 	PYIAS.SectorID;
 
 -- Allocate BudgetPoints.
-update PYIASBudgetPerformance set BudgetPoints = 1;
+update PYIASBudgetPerformance set BudgetPoints = ProgrammeID * YearID * IndicatorID * ActorID * SectorID;
 
 -- Allocate Budget.
 update PYIASBudgetPerformance
