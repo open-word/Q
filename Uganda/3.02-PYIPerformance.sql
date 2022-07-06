@@ -12,7 +12,7 @@ create Table PYIPerformance
 );
 go
 
--- Select random numbers for Performance.
+-- Select RandomNumbers for Performance.
 declare @T table (ProgrammeID int, YearID int, IndicatorID int, RNID int);
 insert @T (ProgrammeID, YearID, IndicatorID, RNID)
 select
