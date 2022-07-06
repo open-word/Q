@@ -4,8 +4,7 @@ go
 create Table PY
 (
 	ProgrammeID int,
-	YearID int,
-	Budget decimal(18,8)
+	YearID int
 	constraint PK_PY primary key (ProgrammeID, YearID),
 	constraint FK_PY_P foreign key (ProgrammeID) references P (ProgrammeID),
 	constraint FK_PY_Y foreign key (YearID) references Y (YearID)
@@ -25,5 +24,5 @@ order by
 
 --select * from PY;
 
-select '2.1'
+select '2.01'
 go

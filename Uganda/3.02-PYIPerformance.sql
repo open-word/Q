@@ -1,36 +1,34 @@
 use Uganda;
 go
 
-create Table PYI
+create Table PYIPerformance
 (
 	ProgrammeID int,
 	YearID int,
 	IndicatorID int,
 	Performance decimal(18,8),
-	constraint PK_PYI primary key (ProgrammeID, YearID, IndicatorID),
-	constraint FK_PYI_PY foreign key (ProgrammeID, YearID) references PY (ProgrammeID, YearID),
-	constraint FK_PYI_PI foreign key (ProgrammeID, IndicatorID) references PI (ProgrammeID, IndicatorID)
+	constraint PK_PYIPerformance primary key (ProgrammeID, YearID, IndicatorID),
+	constraint FK_PYIPerformance_PYI foreign key (ProgrammeID, YearID, IndicatorID) references PYI (ProgrammeID, YearID, IndicatorID),
 );
 go
 
--- Create a stub with random numbers.
+-- Select random numbers for Performance.
 declare @T table (ProgrammeID int, YearID int, IndicatorID int, RNID int);
 insert @T (ProgrammeID, YearID, IndicatorID, RNID)
 select
-	PY.ProgrammeID,
-	PY.YearID,
-	PI.IndicatorID,
-	next value for sRN over (order by PY.ProgrammeID, PY.YearID, PI.IndicatorID)
+	PYI.ProgrammeID,
+	PYI.YearID,
+	PYI.IndicatorID,
+	next value for sRN over (order by PYI.ProgrammeID, PYI.YearID, PYI.IndicatorID)
 from
-	PY
-	join PI on PY.ProgrammeID = PI.ProgrammeID
+	PYI
 order by
-	PY.ProgrammeID,
-	PY.YearID,
-	PI.IndicatorID;
+	PYI.ProgrammeID,
+	PYI.YearID,
+	PYI.IndicatorID;
 
--- Simulate Performance.
-insert PYI (ProgrammeID, YearID, IndicatorID, Performance)
+-- Insert Performance.
+insert PYIPerformance (ProgrammeID, YearID, IndicatorID, Performance)
 select
 	T.ProgrammeID,
 	T.YearID,
@@ -45,7 +43,7 @@ order by
 	T.IndicatorID;
 
 update 
-	PYI 
+	PYIPerformance
 set 
 	Performance = case
 					when ProgrammeID = 1 and YearID = 1 and IndicatorID = 1 then 0.60
@@ -58,7 +56,7 @@ set
 					when ProgrammeID = 2 and YearID = 2 and IndicatorID = 4 then 1.10
 				end;
 
---select * from PYI;
+--select * from PYIPerformance;
 
-select '5.1'
+select '3.02'
 go

@@ -12,25 +12,24 @@ create Table PYIA
 	Performance decimal(18,8),
 	WeightedPerformance as convert(decimal(18,8), Budget * Performance),
 	constraint PK_PYIA primary key (ProgrammeID, YearID, IndicatorID, ActorID),
-	constraint FK_PYIA_PY foreign key (ProgrammeID, YearID) references PY (ProgrammeID, YearID),
-	constraint FK_PYIA_PI foreign key (ProgrammeID, IndicatorID) references PI (ProgrammeID, IndicatorID)
+	constraint FK_PYIA_PYI foreign key (ProgrammeID, YearID, IndicatorID) references PYI (ProgrammeID, YearID, IndicatorID),
+	constraint FK_PYIA_PA foreign key (ProgrammeID, ActorID) references PA (ProgrammeID, ActorID)
 );
 go
 
 insert PYIA (ProgrammeID, YearID, IndicatorID, ActorID)
 select
-	PYI.ProgrammeID,
-	PYI.YearID,
-	PYI.IndicatorID,
-	PA.ActorID
+	PYIA.ProgrammeID,
+	PYIA.YearID,
+	PYIA.IndicatorID,
+	PYIA.ActorID
 from
-	PYI
-	join PA on PYI.ProgrammeID = PA.ProgrammeID
+	PYIA
 order by
-	PYI.ProgrammeID,
-	PYI.YearID,
-	PYI.IndicatorID,
-	PA.ActorID;
+	PYIA.ProgrammeID,
+	PYIA.YearID,
+	PYIA.IndicatorID,
+	PYIA.ActorID;
 
 -- Allocate BudgetPoints.
 update PYIA set BudgetPoints = 1;
@@ -69,7 +68,7 @@ from
 
 --select * from PYIA;
 
-select '6.1'
+select '5.1'
 go
 
 --select 

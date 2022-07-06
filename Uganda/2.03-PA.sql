@@ -24,5 +24,5 @@ order by
 
 --select * from PA;
 
-select '2.3'
+select '2.03'
 go

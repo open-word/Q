@@ -17,5 +17,5 @@ insert S (SectorID, Name, Reference) values
 
 --select * from S;
 
-select '0.4'
+select '1.5'
 go

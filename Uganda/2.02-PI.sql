@@ -24,5 +24,5 @@ order by
 
 --select * from PI;
 
-select '2.2'
+select '2.02'
 go
