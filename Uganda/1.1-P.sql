@@ -15,10 +15,24 @@ create table P
 go
 
 insert P (ProgrammeID, Name, Acronym, TLA, Reference) values
- ( 1,'Programme 01', 'P1',	'P01',	'01'),
- ( 2,'Programme 02', 'P2',	'P02',	'02'),
- ( 3,'Programme 03', 'P3',	'P03',	'03'),
- ( 4,'Programme 04', 'P4',	'P04',	'04');
+ ( 1,'Agro-industrialization',														'AI',		'AIN',	'01'),
+ ( 2,'Mineral Development',															'MD',		'MDE',	'02'),
+ ( 3,'Sustainable Development of Petroleam Resources',								'SDPR',		'SDP',	'03'),
+ ( 4,'Tourism Development',															'TD',		'TDE',	'04'),
+ ( 5,'Natural Resources, Environment, Climate Change, Land and Water Management',	'NRECCLWM',	'NRE',	'05'),
+ ( 6,'Private Sector Development',													'PSD',		'PSD',	'06'),
+ ( 7,'Manufacturing',																'M',		'MAN',	'07'),
+ ( 8,'Integrated Transport Infrastructure and Services',							'ITIS',		'ITI',	'08'),
+ ( 9,'Sustainable Energy Development',												'SED',		'SED',	'09'),
+ (10,'Digital Transformation',														'DT',		'DTR',	'10'),
+ (11,'Sustainable Urbanization and Housing',										'SUH',		'SUH',	'11'),
+ (12,'Human Capital Development',													'HCD',		'HCD',	'12'),
+ (13,'Innovation, Technology Development and Transfer',								'ITDT',		'ITD',	'13'),
+ (14,'Community Mobilization and Mindset Change',									'CMMC',		'CMM',	'14'),
+ (15,'Governance and Security',														'GS',		'GSE',	'15'),
+ (16,'Public Sector Transformation',												'PST',		'PST',	'16'),
+ (17,'Regional Development',														'RD',		'RDE',	'17'),
+ (18,'Development Plan Implementation',												'DPI',		'DPI',	'18');
 go
 
 --select * from P;

@@ -12,8 +12,8 @@ create Table S
 go
 
 insert S (SectorID, Name, Reference) values
-	(1,'Public','01'),
-	(2,'Private','02');
+	(1,'Public',	'01'),
+	(2,'Private',	'02');
 
 --select * from S;
 
