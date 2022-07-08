@@ -6,10 +6,12 @@ create table I
 	IndicatorID int,
 	Name nvarchar(250),
 	Reference nvarchar(10),
-	ReferenceName as Reference + '-' + Name,
+	ReferenceName as Reference + ' - ' + Name,
 	Baseline decimal (14,4),
 	Units nvarchar(50),
-	constraint PK_I primary key (IndicatorID)
+	constraint PK_I primary key (IndicatorID),
+	constraint UQ_I_Name unique (Name),
+	constraint UQ_I_Reference unique (Reference)
 );
 
 insert I (IndicatorID, Name, Reference, Baseline, Units) values
@@ -187,7 +189,7 @@ insert I (IndicatorID, Name, Reference, Baseline, Units) values
 (172,'Reduce incidence of unethical behavior (corruption, crime rate, theft, immorality) - Corruption perception index                  ','14.06.01',26.0000       ,'?                               '),
 (173,'Reduce incidence of unethical behavior (corruption, crime rate, theft, immorality) - Crime rate per 100,000 persons               ','14.06.02',612.0000      ,'Crimes per 100,000 Persons      '),
 (174,'Level of satisfaction with public service delivery                                                                                ','14.07.01',50.0000       ,'?                               '),
-(175,'Government effectiveness index                                                                                                    ','14.08.01',-0.5000       ,'?                               '),
+(175,'Government effectiveness index (1)																								','14.08.01',-0.5000       ,'?                               '),
 (176,'Reduce percentage of backlog cases in the system                                                                                  ','15.01.01',18.0000       ,'Percent                         '),
 (177,'Increase disposal rate of cases                                                                                                   ','15.02.01',60.0000       ,'?                               '),
 (178,'Increase percentage of districts with one stop frontline JLOS service points                                                      ','15.03.01',67.5000       ,'Percent                         '),
@@ -200,7 +202,7 @@ insert I (IndicatorID, Name, Reference, Baseline, Units) values
 (185,'Increase percentage of citizens engaged in electoral process                                                                      ','15.10.01',80.0000       ,'Percent                         '),
 (186,'Improve Peace Index                                                                                                               ','15.11.01',2.1960        ,'?                               '),
 (187,'Improve level of implementation of the Settlement Transformative Agenda, percent                                                  ','15.12.01',40.0000       ,'Percent                         '),
-(188,'Increase Government effectiveness index                                                                                           ','16.01.01',-0.5800       ,'?                               '),
+(188,'Increase Government effectiveness index (2)																				        ','16.01.01',-0.5800       ,'?                               '),
 (189,'Improve Global competitiveness index                                                                                              ','16.02.01',48.9000       ,'?                               '),
 (190,'Reduce corruption perception index                                                                                                ','16.03.01',26.0000       ,'?                               '),
 (191,'Reduce poverty in the lagging regions of Uganda - Bukedi                                                                          ','17.01.01',43.7000       ,'?                               '),
@@ -221,7 +223,7 @@ insert I (IndicatorID, Name, Reference, Baseline, Units) values
 (206,'Increase Revenue to GDP ratio                                                                                                     ','18.06.01',12.9500       ,'?                               '),
 (207,'Increase Proportion of direct budget transfers to local government                                                                ','18.07.01',12.0000       ,'Percent                         '),
 (208,'Improve on World Bank Statistical Capacity Indicator (WBSCI) score                                                                ','18.08.01',74.4000       ,'?                               '),
-(209,'Government Effectiveness index                                                                                                    ','18.09.01',-0.5000       ,'?                               '),
+(209,'Government Effectiveness index (3)                                                                                                ','18.09.01',-0.5000       ,'?                               '),
 (210,'Proportion of NDPIII baseline indicators up-to-date & updated                                                                     ','18.10.01',60.0000       ,'Percent                         ');
 
 --select * from I;
