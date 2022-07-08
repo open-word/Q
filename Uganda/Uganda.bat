@@ -10,16 +10,16 @@ sqlcmd -i 1.3-I.sql
 sqlcmd -i 1.4-A.sql
 sqlcmd -i 1.5-S.sql
 
-REM sqlcmd -i 2.01-PY.sql
-REM sqlcmd -i 2.02-PI.sql
+sqlcmd -i 2.01-PY.sql
+sqlcmd -i 2.02-PI.sql
 REM sqlcmd -i 2.03-PA.sql
-REM sqlcmd -i 2.04-PS.sql
+sqlcmd -i 2.04-PS.sql
 REM sqlcmd -i 2.10-AS.sql
 
-REM sqlcmd -i 3.01-PYI.sql
-REM sqlcmd -i 3.02-PYIPerformance.sql
-REM sqlcmd -i 3.04-PYS.sql
-REM sqlcmd -i 3.05-PYSBudget.sql
+sqlcmd -i 3.01-PYI.sql
+sqlcmd -i 3.02-PYIPerformance.sql
+sqlcmd -i 3.04-PYS.sql
+sqlcmd -i 3.05-PYSBudget.sql
 
 REM sqlcmd -i 4.1-PYIA.sql
 REM sqlcmd -i 5.1-PYIAS.sql
