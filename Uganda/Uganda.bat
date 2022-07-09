@@ -12,7 +12,7 @@ sqlcmd -i 1.5-S.sql
 
 sqlcmd -i 2.01-PY.sql
 sqlcmd -i 2.02-PI.sql
-REM sqlcmd -i 2.03-PA.sql
+sqlcmd -i 2.03-PA.sql
 sqlcmd -i 2.04-PS.sql
 REM sqlcmd -i 2.10-AS.sql
 

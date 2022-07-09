@@ -8,7 +8,6 @@ create table ndp3.ProgrammesActors
 	constraint PK_ProgrammesActors primary key (ProgrammeID, ActorID),
 	constraint FK_ProgrammesActors_Programmes foreign key (ProgrammeID) references ndp3.Programmes (ProgrammeID),
 	constraint FK_ProgrammesActors_Actors foreign key (ActorID) references ndp3.Actors (ActorID),
-	--index IX_ProgrammesActors_ProgrammeID (ProgrammeID),
 	index IX_ProgrammesActors_ActorID (ActorID)
 );
 
