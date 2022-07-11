@@ -19,7 +19,7 @@ declare @RandomNumbers table
 
 declare @ID int = 1;
 declare @Rand float = rand(1) -- for reproducibility
-while @ID <= 10000
+while @ID <= 100000
 begin
 	insert @RandomNumbers (RandomNumberID, RandomNumber) values (@ID, rand());
 	set @ID = @ID+1;
