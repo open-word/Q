@@ -1,7 +1,7 @@
 use Uganda;
 go
 
-drop view if exists VPYIAS;
+drop view if exists VPYSIA;
 
 drop table if exists Tests;
 

@@ -36,5 +36,5 @@ insert Tests (Name, Result) values ('BudgetTest', iif(@BudgetTest=0,'Pass','Fail
 
 select * from Tests;
 
-select '7.1'
+select '6.1'
 go

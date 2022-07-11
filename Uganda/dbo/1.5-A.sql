@@ -6,9 +6,9 @@ create table A
 	ActorID int,
 	Name nvarchar(250),
 	ShortName nvarchar(25),
-	Reference as format(ActorID,'D2'),
-	ReferenceName as format(ActorID,'D2') + ' - ' + Name,
-	ReferenceShortName as format(ActorID,'D2') + ' - ' + ShortName,
+	Reference as format(ActorID,'D3'),
+	ReferenceName as format(ActorID,'D3') + ' - ' + Name,
+	ReferenceShortName as format(ActorID,'D3') + ' - ' + ShortName,
 	constraint PK_A primary key (ActorID),
 	constraint UQ_A_Name unique (Name),
 	constraint UQ_A_ShortName unique (ShortName)
@@ -16,8 +16,8 @@ create table A
 go
 
 insert A (ActorID, Name, ShortName) values
-(1  ,'Acade'                                                                          ,'ACA'           ),
-(2  ,'Academic and Research Institutions'                                             ,'ARIs'          ),
+(1  ,'Academia'                                                                       ,'ACA'           ),
+(2  ,'Academic and Research Institutions'											  ,'ARIs'          ),
 (3  ,'Academic and Vocational Institutions'                                           ,'AVIs'          ),
 (4  ,'Academic Institutions'                                                          ,'ACAIs'         ),
 (5  ,'Accreditation Bodies'                                                           ,'ACBs'          ),
