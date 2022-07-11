@@ -6,9 +6,9 @@ create table A
 	ActorID int,
 	Name nvarchar(250),
 	ShortName nvarchar(25),
-	Reference as format(ActorID,'D2'),
-	ReferenceName as format(ActorID,'D2') + ' - ' + Name,
-	ReferenceShortName as format(ActorID,'D2') + ' - ' + ShortName,
+	Reference as format(ActorID,'D3'),
+	ReferenceName as format(ActorID,'D3') + ' - ' + Name,
+	ReferenceShortName as format(ActorID,'D3') + ' - ' + ShortName,
 	constraint PK_A primary key (ActorID),
 	constraint UQ_A_Name unique (Name),
 	constraint UQ_A_ShortName unique (ShortName)

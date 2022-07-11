@@ -19,7 +19,7 @@ from
 	P
 	cross join S
 where
-	not (P.ProgrammeID in (16,18) and S.SectorID = 2) -- 16 and 18 have no Private Sector budget.
+	not (P.ProgrammeID in (16,18) and S.SectorID = 2) -- 16 and 18 have no Private Sector Budget.
 order by
 	P.ProgrammeID,
 	S.SectorID;

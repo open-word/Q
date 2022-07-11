@@ -12,6 +12,7 @@ create Table PSA
 );
 go
 
+-- Insert from ndp3, add Actor 152 (Private Sector) to all Programmes except 16 and 18 (which have no Private Sector Budget).
 insert PSA (ProgrammeID, SectorID, ActorID) values
 (1  ,1 ,1   ),
 (1  ,1 ,3   ),
@@ -22,10 +23,7 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (1  ,1 ,30  ),
 (1  ,1 ,41  ),
 (1  ,1 ,43  ),
-(1  ,2 ,44  ),
-(1  ,2 ,49  ),
 (1  ,1 ,51  ),
-(1  ,2 ,68  ),
 (1  ,1 ,78  ),
 (1  ,1 ,81  ),
 (1  ,1 ,83  ),
@@ -81,6 +79,9 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (1  ,1 ,234 ),
 (1  ,1 ,241 ),
 (1  ,1 ,243 ),
+(1  ,2 ,44  ),
+(1  ,2 ,49  ),
+(1  ,2 ,68  ),
 (1  ,2 ,152 ),
 (2  ,1 ,1   ),
 (2  ,1 ,4   ),
@@ -89,7 +90,6 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (2  ,1 ,26  ),
 (2  ,1 ,33  ),
 (2  ,1 ,36  ),
-(2  ,2 ,49  ),
 (2  ,1 ,78  ),
 (2  ,1 ,91  ),
 (2  ,1 ,92  ),
@@ -122,11 +122,10 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (2  ,1 ,226 ),
 (2  ,1 ,228 ),
 (2  ,1 ,235 ),
+(2  ,2 ,49  ),
 (2  ,2 ,152 ),
 (3  ,1 ,1   ),
 (3  ,1 ,11  ),
-(3  ,2 ,61  ),
-(3  ,2 ,72  ),
 (3  ,1 ,78  ),
 (3  ,1 ,89  ),
 (3  ,1 ,90  ),
@@ -157,11 +156,11 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (3  ,1 ,224 ),
 (3  ,1 ,228 ),
 (3  ,1 ,239 ),
+(3  ,2 ,61  ),
+(3  ,2 ,72  ),
 (3  ,2 ,152 ),
 (4  ,1 ,14  ),
-(4  ,2 ,27  ),
 (4  ,1 ,38  ),
-(4  ,2 ,61  ),
 (4  ,1 ,69  ),
 (4  ,1 ,75  ),
 (4  ,1 ,78  ),
@@ -200,6 +199,8 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (4  ,1 ,239 ),
 (4  ,1 ,240 ),
 (4  ,1 ,242 ),
+(4  ,2 ,27  ),
+(4  ,2 ,61  ),
 (4  ,2 ,152 ),
 (5  ,1 ,1   ),
 (5  ,1 ,7   ),
@@ -207,12 +208,10 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (5  ,1 ,14  ),
 (5  ,1 ,22  ),
 (5  ,1 ,26  ),
-(5  ,2 ,27  ),
 (5  ,1 ,28  ),
 (5  ,1 ,34  ),
 (5  ,1 ,35  ),
 (5  ,1 ,36  ),
-(5  ,2 ,47  ),
 (5  ,1 ,75  ),
 (5  ,1 ,78  ),
 (5  ,1 ,79  ),
@@ -244,9 +243,7 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (5  ,1 ,139 ),
 (5  ,1 ,145 ),
 (5  ,1 ,146 ),
-(5  ,2 ,153 ),
 (5  ,1 ,157 ),
-(5  ,2 ,165 ),
 (5  ,1 ,180 ),
 (5  ,1 ,188 ),
 (5  ,1 ,190 ),
@@ -266,14 +263,17 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (5  ,1 ,231 ),
 (5  ,1 ,232 ),
 (5  ,1 ,239 ),
+(5  ,2 ,27  ),
+(5  ,2 ,47  ),
 (5  ,2 ,152 ),
+(5  ,2 ,153 ),
+(5  ,2 ,165 ),
 (6  ,1 ,1   ),
 (6  ,1 ,11  ),
 (6  ,1 ,20  ),
 (6  ,1 ,36  ),
 (6  ,1 ,38  ),
 (6  ,1 ,40  ),
-(6  ,2 ,45  ),
 (6  ,1 ,59  ),
 (6  ,1 ,69  ),
 (6  ,1 ,78  ),
@@ -296,7 +296,6 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (6  ,1 ,149 ),
 (6  ,1 ,150 ),
 (6  ,1 ,157 ),
-(6  ,2 ,172 ),
 (6  ,1 ,180 ),
 (6  ,1 ,190 ),
 (6  ,1 ,191 ),
@@ -312,15 +311,15 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (6  ,1 ,233 ),
 (6  ,1 ,234 ),
 (6  ,1 ,235 ),
+(6  ,2 ,45  ),
 (6  ,2 ,152 ),
+(6  ,2 ,172 ),
 (7  ,1 ,1   ),
 (7  ,1 ,2   ),
 (7  ,1 ,15  ),
 (7  ,1 ,36  ),
 (7  ,1 ,55  ),
-(7  ,2 ,67  ),
 (7  ,1 ,78  ),
-(7  ,2 ,87  ),
 (7  ,1 ,89  ),
 (7  ,1 ,91  ),
 (7  ,1 ,93  ),
@@ -345,6 +344,8 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (7  ,1 ,213 ),
 (7  ,1 ,226 ),
 (7  ,1 ,228 ),
+(7  ,2 ,67  ),
+(7  ,2 ,87  ),
 (7  ,2 ,152 ),
 (8  ,1 ,14  ),
 (8  ,1 ,78  ),
@@ -454,19 +455,18 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (11 ,1 ,131 ),
 (11 ,1 ,135 ),
 (11 ,1 ,139 ),
-(11 ,2 ,141 ),
 (11 ,1 ,157 ),
 (11 ,1 ,197 ),
 (11 ,1 ,203 ),
 (11 ,1 ,220 ),
 (11 ,1 ,228 ),
+(11 ,2 ,141 ),
 (11 ,2 ,152 ),
 (12 ,1 ,5   ),
 (12 ,1 ,7   ),
 (12 ,1 ,19  ),
 (12 ,1 ,22  ),
 (12 ,1 ,26  ),
-(12 ,2 ,27  ),
 (12 ,1 ,33  ),
 (12 ,1 ,36  ),
 (12 ,1 ,39  ),
@@ -476,9 +476,6 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (12 ,1 ,56  ),
 (12 ,1 ,57  ),
 (12 ,1 ,58  ),
-(12 ,2 ,62  ),
-(12 ,2 ,65  ),
-(12 ,2 ,66  ),
 (12 ,1 ,74  ),
 (12 ,1 ,78  ),
 (12 ,1 ,86  ),
@@ -515,11 +512,8 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (12 ,1 ,154 ),
 (12 ,1 ,156 ),
 (12 ,1 ,157 ),
-(12 ,2 ,163 ),
-(12 ,2 ,164 ),
 (12 ,1 ,168 ),
 (12 ,1 ,170 ),
-(12 ,2 ,172 ),
 (12 ,1 ,173 ),
 (12 ,1 ,176 ),
 (12 ,1 ,177 ),
@@ -533,7 +527,14 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (12 ,1 ,226 ),
 (12 ,1 ,230 ),
 (12 ,1 ,233 ),
+(12 ,2 ,27  ),
+(12 ,2 ,62  ),
+(12 ,2 ,65  ),
+(12 ,2 ,66  ),
 (12 ,2 ,152 ),
+(12 ,2 ,163 ),
+(12 ,2 ,164 ),
+(12 ,2 ,172 ),
 (13 ,1 ,1   ),
 (13 ,1 ,7   ),
 (13 ,1 ,9   ),
@@ -562,7 +563,6 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (13 ,1 ,131 ),
 (13 ,1 ,139 ),
 (13 ,1 ,145 ),
-(13 ,2 ,165 ),
 (13 ,1 ,180 ),
 (13 ,1 ,206 ),
 (13 ,1 ,209 ),
@@ -572,6 +572,7 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (13 ,1 ,233 ),
 (13 ,1 ,238 ),
 (13 ,2 ,152 ),
+(13 ,2 ,165 ),
 (14 ,1 ,26  ),
 (14 ,1 ,36  ),
 (14 ,1 ,37  ),
@@ -591,22 +592,22 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (14 ,1 ,102 ),
 (14 ,1 ,106 ),
 (14 ,1 ,116 ),
-(14 ,2 ,130 ),
 (14 ,1 ,131 ),
 (14 ,1 ,132 ),
 (14 ,1 ,137 ),
 (14 ,1 ,138 ),
 (14 ,1 ,139 ),
-(14 ,2 ,142 ),
 (14 ,1 ,159 ),
-(14 ,2 ,161 ),
 (14 ,1 ,178 ),
 (14 ,1 ,189 ),
 (14 ,1 ,199 ),
 (14 ,1 ,201 ),
 (14 ,1 ,226 ),
 (14 ,1 ,244 ),
+(14 ,2 ,130 ),
+(14 ,2 ,142 ),
 (14 ,2 ,152 ),
+(14 ,2 ,161 ),
 (15 ,1 ,10  ),
 (15 ,1 ,18  ),
 (15 ,1 ,25  ),
@@ -681,7 +682,6 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (17 ,1 ,23  ),
 (17 ,1 ,26  ),
 (17 ,1 ,36  ),
-(17 ,2 ,46  ),
 (17 ,1 ,78  ),
 (17 ,1 ,89  ),
 (17 ,1 ,91  ),
@@ -704,6 +704,7 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 (17 ,1 ,203 ),
 (17 ,1 ,224 ),
 (17 ,1 ,236 ),
+(17 ,2 ,46  ),
 (17 ,2 ,152 ),
 (18 ,1 ,1   ),
 (18 ,1 ,6   ),
@@ -741,72 +742,3 @@ insert PSA (ProgrammeID, SectorID, ActorID) values
 
 select '3.5'
 go
-
---select 
---	'('+
---	convert(nchar(3), PA.ProgrammeID) +','+
---	convert(nchar(2), SA.SectorID) +','+
---	convert(nchar(4), SA.ActorID) +
---	'),'
---from 
---	PA join
---	PS on PA.ProgrammeID = PS.ProgrammeID join
---	SA on PA.ActorID = SA.ActorID and PS.SectorID = SA.SectorID
---order by
---	PA.ProgrammeID,
---	SA.SectorID,
---	SA.ActorID;
-
--- ---------------
--- Pre-work
--- ---------------
-
---drop table if exists PA;
-
----- Take everything.
---select 
---	* 
---into
---	PA
---from
---	ndp3.ProgrammesActors;
---go
-
----- 18 has no budget for private sector, so leave the sector 2's out.
---delete from PA where ProgrammeID = 18 and ActorID in (1,28,162);
-
-----  Add a generic Private Sector actor to all Programmes that do not already have one (if they have Private Sector budget).
---insert PA (ProgrammeID, ActorID) values 
---	(3  ,152), 
---	(8  ,152),
---	(9  ,152),
---	(14 ,152),
---	(15 ,152),
---	(17, 152);
---go
-
----- Now check ...
----- All ProgrammeActor must be valid.
----- All ProgrammeSector must have an Actor.
---select
---	PS.ProgrammeID,
---	PS.SectorID,
---	PAS.ProgrammeID,
---	PAS.SectorID,
---	PAS.ActorID
---from 
---	PS full outer join
---	(
---		select
---			PA.ProgrammeID,
---			SA.SectorID,
---			A.ActorID
---		from 
---			PA join
---			A on PA.ActorID = A.ActorID join
---			SA on A.ActorID = SA.ActorID
---	) PAS on
---		PS.ProgrammeID = PAS.ProgrammeID and
---		PS.SectorID = PAS.SectorID
---where
---	PS.ProgrammeID is null or PAS.ProgrammeID is null;

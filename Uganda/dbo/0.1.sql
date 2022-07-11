@@ -1,7 +1,7 @@
 use Uganda;
 go
 
-drop view if exists VPYIAS;
+drop view if exists VPYSIA;
 
 drop table if exists Tests;
 
@@ -28,7 +28,7 @@ drop table if exists S;
 drop table if exists Y;
 drop table if exists P;
 
---drop table if exists RN;
+drop table if exists RN;
 drop sequence if exists sRN;
 go
 

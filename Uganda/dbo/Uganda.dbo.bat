@@ -2,7 +2,7 @@
 
 sqlcmd -i 0.1.sql
 sqlcmd -i 0.2-sRN.sql
-REM sqlcmd -i 0.3-RN.sql
+sqlcmd -i 0.3-RN.sql
 
 sqlcmd -i 1.1-P.sql
 sqlcmd -i 1.2-Y.sql
@@ -26,6 +26,8 @@ sqlcmd -i 4.2-PYSA.sql
 
 sqlcmd -i 5.1-PYSIA.sql
 sqlcmd -i 5.2-PYSIABudgetPerformance.sql
-sqlcmd -i 7.1-Tests.sql
-REM sqlcmd -i 8.1-vPYIAS.sql
+
+sqlcmd -i 6.1-Tests.sql
+
+sqlcmd -i 7.1-vPYSIA.sql
 PAUSE
