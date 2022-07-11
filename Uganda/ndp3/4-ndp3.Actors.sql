@@ -32,7 +32,7 @@ create table ndp3.Actors
 --);
 
 --insert @T1 (NameInIntervention, Acronym, Description, Name, ShortName) values
---('Acade',NULL,NULL,'Acade','ACA'),
+--('Academia',NULL,NULL,'Academia','ACA'),
 --('Academic and Research Institutions',NULL,NULL,'Academic and Research Institutions','ARIs'),
 --('Academic and Vocational Institutions',NULL,NULL,'Academic and Vocational Institutions','AVIs'),
 --('Academic Institutions',NULL,NULL,'Academic Institutions','ACAIs'),
@@ -326,7 +326,7 @@ create table ndp3.Actors
 -- ------------------------------------------------------------------------------------------------------------
 
 insert ndp3.Actors (ActorID, NameInIntervention, Acronym, Description, Name, ShortName) values
-(1   ,'Acade'                                             ,NULL        ,NULL                                                                              ,'Acade'                                                                           ,'ACA'       ),
+(1   ,'Academia'                                             ,NULL        ,NULL                                                                           ,'Academia'                                                                           ,'ACA'       ),
 (2   ,'Academic and Research Institutions'                ,NULL        ,NULL                                                                              ,'Academic and Research Institutions'                                              ,'ARIs'      ),
 (3   ,'Academic and Vocational Institutions'              ,NULL        ,NULL                                                                              ,'Academic and Vocational Institutions'                                            ,'AVIs'      ),
 (4   ,'Academic Institutions'                             ,NULL        ,NULL                                                                              ,'Academic Institutions'                                                           ,'ACAIs'     ),

@@ -18,11 +18,13 @@ select
 from
 	P
 	cross join S
+where
+	not (P.ProgrammeID in (16,18) and S.SectorID = 2) -- 16 and 18 have no Private Sector budget.
 order by
 	P.ProgrammeID,
 	S.SectorID;
 
 --select * from PS;
 
-select '2.04'
+select '2.2'
 go

@@ -44,5 +44,5 @@ order by
 
 --select * from PYIPerformance;
 
-select '3.02'
+select '3.2'
 go

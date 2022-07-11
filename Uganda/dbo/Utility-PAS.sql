@@ -1,9 +1,20 @@
 select 
-	P.Name,
-	A.Name,
-	S.Name
+	PS.ProgrammeID,
+	PS.SectorID,
+	count(PAS.ActorID)
 from 
-	P full outer join
-	PA on P.ProgrammeID = PA.ProgrammeID full outer join 
-		A on PA.ActorID = A.ActorID full outer join
-	[AS] on A.ActorID = [AS].ActorID full outer join S on [AS].SectorID = S.SectorID;
+	PS left join
+	(
+		select 
+			PA.ProgrammeID,
+			PA.ActorID,
+			[AS].SectorID
+		from
+			PA join 
+			[AS] on PA.ActorID = [AS].ActorID
+	) PAS on PS.ProgrammeID = PAS.ProgrammeID and PS.SectorID = PAS.SectorID
+group by
+	PS.ProgrammeID,
+	PS.SectorID
+having
+	count(PAS.ActorID) = 0;

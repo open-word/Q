@@ -17,7 +17,7 @@ declare @PerformanceTest bit;
 select @PerformanceTest = count(1) from
 	(select ProgrammeID, YearID, IndicatorID, Performance from PYIPerformance) a 
 		full outer join
-	(select ProgrammeID, YearID, IndicatorID, Performance from PYIASBudgetPerformance) b 
+	(select ProgrammeID, YearID, IndicatorID, Performance from PYSIABudgetPerformance) b 
 		on a.ProgrammeID = b.ProgrammeID and a.YearID = b.YearID and a.IndicatorID = b.IndicatorID and a.Performance = b.Performance
 where
 	a.Performance is null or b.Performance is null;
@@ -28,7 +28,7 @@ declare @BudgetTest bit;
 select @BudgetTest = count(1) from
 	(select ProgrammeID, YearID, SectorID, convert(decimal(18,4),Budget) [PYSBudget] from PYSBudget) a 
 		full outer join
-	(select ProgrammeID, YearID, SectorID, convert(decimal(18,4),sum(Budget)) [PYSBudget] from PYIASBudgetPerformance group by ProgrammeID, YearID, SectorID) b 
+	(select ProgrammeID, YearID, SectorID, convert(decimal(18,4),sum(Budget)) [PYSBudget] from PYSIABudgetPerformance group by ProgrammeID, YearID, SectorID) b 
 		on a.ProgrammeID = b.ProgrammeID and a.YearID = b.YearID and a.SectorID = b.SectorID and a.PYSBudget = b.PYSBudget 
 where
 	a.PYSBudget is null or b.PYSBudget is null;

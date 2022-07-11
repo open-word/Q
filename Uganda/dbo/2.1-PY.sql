@@ -24,5 +24,5 @@ order by
 
 --select * from PY;
 
-select '2.01'
+select '2.1'
 go

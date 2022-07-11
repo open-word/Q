@@ -6,24 +6,26 @@ sqlcmd -i 0.3-RN.sql
 
 sqlcmd -i 1.1-P.sql
 sqlcmd -i 1.2-Y.sql
-sqlcmd -i 1.3-I.sql
-sqlcmd -i 1.4-A.sql
-sqlcmd -i 1.5-S.sql
+sqlcmd -i 1.3-S.sql
+sqlcmd -i 1.4-I.sql
+sqlcmd -i 1.5-A.sql
 
-sqlcmd -i 2.01-PY.sql
-sqlcmd -i 2.02-PI.sql
-sqlcmd -i 2.03-PA.sql
-sqlcmd -i 2.04-PS.sql
-REM sqlcmd -i 2.10-AS.sql
+sqlcmd -i 2.1-PY.sql
+sqlcmd -i 2.2-PS.sql
+sqlcmd -i 2.3-PI.sql
+sqlcmd -i 2.4-SA.sql
 
-sqlcmd -i 3.01-PYI.sql
-sqlcmd -i 3.02-PYIPerformance.sql
-sqlcmd -i 3.04-PYS.sql
-sqlcmd -i 3.05-PYSBudget.sql
+sqlcmd -i 3.1-PYI.sql
+sqlcmd -i 3.2-PYIPerformance.sql
+sqlcmd -i 3.3-PYS.sql 
+sqlcmd -i 3.4-PYSBudget.sql
+sqlcmd -i 3.5-PSA.sql
 
-REM sqlcmd -i 4.1-PYIA.sql
-REM sqlcmd -i 5.1-PYIAS.sql
-REM sqlcmd -i 6.1-PYIASBudgetPerformance.sql
-REM sqlcmd -i 7.1-Tests.sql
+sqlcmd -i 4.1-PYSI.sql
+sqlcmd -i 4.2-PYSA.sql
+
+sqlcmd -i 5.1-PYSIA.sql
+sqlcmd -i 5.2-PYSIABudgetPerformance.sql
+sqlcmd -i 7.1-Tests.sql
 REM sqlcmd -i 8.1-vPYIAS.sql
 PAUSE

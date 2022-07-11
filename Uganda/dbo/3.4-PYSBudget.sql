@@ -168,11 +168,11 @@ insert PYSBudget (ProgrammeID, YearID, SectorID, Budget) values
 (16,3,1,convert(decimal(18,8),5251.77321022259)),
 (16,4,1,convert(decimal(18,8),5717.89923092473)),
 (16,5,1,convert(decimal(18,8),7525.54617948239)),
-(16,1,2,convert(decimal(18,8),0)),
-(16,2,2,convert(decimal(18,8),0)),
-(16,3,2,convert(decimal(18,8),0)),
-(16,4,2,convert(decimal(18,8),0)),
-(16,5,2,convert(decimal(18,8),0)),
+--(16,1,2,convert(decimal(18,8),0)),
+--(16,2,2,convert(decimal(18,8),0)),
+--(16,3,2,convert(decimal(18,8),0)),
+--(16,4,2,convert(decimal(18,8),0)),
+--(16,5,2,convert(decimal(18,8),0)),
 (17,1,1,convert(decimal(18,8),5413.98811916356)),
 (17,2,1,convert(decimal(18,8),5359.13954337417)),
 (17,3,1,convert(decimal(18,8),5771.89943665742)),
@@ -187,14 +187,14 @@ insert PYSBudget (ProgrammeID, YearID, SectorID, Budget) values
 (18,2,1,convert(decimal(18,8),2594.82122915237)),
 (18,3,1,convert(decimal(18,8),2615.64789986651)),
 (18,4,1,convert(decimal(18,8),2648.55072601275)),
-(18,5,1,convert(decimal(18,8),3975.44857624751)),
-(18,1,2,convert(decimal(18,8),0)),
-(18,2,2,convert(decimal(18,8),0)),
-(18,3,2,convert(decimal(18,8),0)),
-(18,4,2,convert(decimal(18,8),0)),
-(18,5,2,convert(decimal(18,8),0));
+(18,5,1,convert(decimal(18,8),3975.44857624751));
+--(18,1,2,convert(decimal(18,8),0)),
+--(18,2,2,convert(decimal(18,8),0)),
+--(18,3,2,convert(decimal(18,8),0)),
+--(18,4,2,convert(decimal(18,8),0)),
+--(18,5,2,convert(decimal(18,8),0));
 
 --select * from PYSBudget;
 
-select '3.05'
+select '3.4'
 go
