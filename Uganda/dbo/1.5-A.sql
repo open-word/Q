@@ -16,8 +16,8 @@ create table A
 go
 
 insert A (ActorID, Name, ShortName) values
-(1  ,'Acade'                                                                          ,'ACA'           ),
-(2  ,'Academic and Research Institutions'                                             ,'ARIs'          ),
+(1  ,'Academia'                                                                       ,'ACA'           ),
+(2  ,'Academic and Research Institutions'											  ,'ARIs'          ),
 (3  ,'Academic and Vocational Institutions'                                           ,'AVIs'          ),
 (4  ,'Academic Institutions'                                                          ,'ACAIs'         ),
 (5  ,'Accreditation Bodies'                                                           ,'ACBs'          ),

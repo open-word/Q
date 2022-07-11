@@ -2,7 +2,7 @@
 
 sqlcmd -i 0.1.sql
 sqlcmd -i 0.2-sRN.sql
-sqlcmd -i 0.3-RN.sql
+REM sqlcmd -i 0.3-RN.sql
 
 sqlcmd -i 1.1-P.sql
 sqlcmd -i 1.2-Y.sql
