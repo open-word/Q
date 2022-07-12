@@ -1,7 +1,7 @@
 use Uganda;
 go
 
-drop view if exists VPYSIA;
+drop view if exists Vision2040;
 
 drop table if exists Tests;
 
@@ -21,12 +21,14 @@ drop table if exists SA;
 drop table if exists PI;
 drop table if exists PS;
 drop table if exists PY;
+drop table if exists PlanP;
 
 drop table if exists A;
 drop table if exists I;
 drop table if exists S;
 drop table if exists Y;
 drop table if exists P;
+drop table if exists Plans;
 
 drop table if exists RN;
 drop sequence if exists sRN;

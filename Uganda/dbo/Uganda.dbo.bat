@@ -4,16 +4,18 @@ sqlcmd -i 0.1.sql
 sqlcmd -i 0.2-sRN.sql
 sqlcmd -i 0.3-RN.sql
 
-sqlcmd -i 1.1-P.sql
-sqlcmd -i 1.2-Y.sql
-sqlcmd -i 1.3-S.sql
-sqlcmd -i 1.4-I.sql
-sqlcmd -i 1.5-A.sql
+sqlcmd -i 1.1-Plans.sql
+sqlcmd -i 1.2-P.sql
+sqlcmd -i 1.3-Y.sql
+sqlcmd -i 1.4-S.sql
+sqlcmd -i 1.5-I.sql
+sqlcmd -i 1.6-A.sql
 
-sqlcmd -i 2.1-PY.sql
-sqlcmd -i 2.2-PS.sql
-sqlcmd -i 2.3-PI.sql
-sqlcmd -i 2.4-SA.sql
+sqlcmd -i 2.1-PlanP.sql
+sqlcmd -i 2.2-PY.sql
+sqlcmd -i 2.3-PS.sql
+sqlcmd -i 2.4-PI.sql
+sqlcmd -i 2.5-SA.sql
 
 sqlcmd -i 3.1-PYI.sql
 sqlcmd -i 3.2-PYIPerformance.sql
@@ -29,5 +31,5 @@ sqlcmd -i 5.2-PYSIABudgetPerformance.sql
 
 sqlcmd -i 6.1-Tests.sql
 
-sqlcmd -i 7.1-vPYSIA.sql
+sqlcmd -i 7.1-Vision2040.sql
 PAUSE

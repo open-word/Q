@@ -259,5 +259,5 @@ insert SA (SectorID, ActorID) values
 
 --select * from SA;
 
-select '2.4'
+select '2.5'
 go

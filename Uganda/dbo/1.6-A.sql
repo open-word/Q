@@ -263,7 +263,7 @@ insert A (ActorID, Name, ShortName) values
 
 --select * from A;
 
-select '1.5'
+select '1.6'
 go
 
 --select 
