@@ -228,7 +228,7 @@ insert I (IndicatorID, Name, Reference, Baseline, Units) values
 
 --select * from I;
 
-select '1.4'
+select '1.5'
 go
 
 --use Uganda;

@@ -21,5 +21,5 @@ insert S (SectorID, Name, ShortName) values
 
 --select * from S;
 
-select '1.3'
+select '1.4'
 go
