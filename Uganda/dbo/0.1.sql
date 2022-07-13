@@ -1,6 +1,10 @@
 use Uganda;
 go
 
+drop table if exists BottlenecksP;
+
+drop table if exists Bottlenecks;
+
 drop view if exists Vision2040;
 
 drop table if exists Tests;
