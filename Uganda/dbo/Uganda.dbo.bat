@@ -32,4 +32,8 @@ sqlcmd -i 5.2-PYSIABudgetPerformance.sql
 sqlcmd -i 6.1-Tests.sql
 
 sqlcmd -i 7.1-Vision2040.sql
+
+sqlcmd -i 8.1-Bottlenecks.sql
+
+sqlcmd -i 9.1-BottlenecksP.sql
 PAUSE
