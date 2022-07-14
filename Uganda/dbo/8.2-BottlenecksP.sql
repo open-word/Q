@@ -61,11 +61,12 @@ insert BottlenecksP (BottleneckRef, ProgrammeReference) values
 
 --select * from BottlenecksP;
 
---select '9.1'
+--select '8.2'
 --go
 
 --select 
---	b.Name, p.Name
+--	b.Name, 
+--	p.Name
 --from
 --	BottlenecksP bp join
 --	Bottlenecks b on bp.BottleneckRef = b.Ref join
