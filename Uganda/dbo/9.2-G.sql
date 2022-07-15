@@ -52,16 +52,18 @@ insert G (GoalID, Name, Ref) values
 --(36  ,'Africa as a Global Partner',				'AU 19'),
 (37  ,'African Financial Responsibility',			'AU 20'),
 
-(38  ,'Infrastructue Access',						'EA 01'),
+(38  ,'Infrastructure Access',						'EA 01'),
 (39 , 'Agricultural Productivity',					'EA 02'),
-(40 , 'Structural Transformation',					'EA 03'),
-(41 , 'Resource Management',						'EA 04'),
+(40 , 'Leveraging Industrialization',				'EA 03'),
+(41 , 'Sustainable Resource Management',			'EA 04'),
 (42 , 'Tourism',									'EA 05'),
 (43 , 'CCI: Cities of the Future',					'EA 06'),
 (44 , 'CCI: Peace and Security',					'EA 07'),
-(45 , 'CCI: Gender, Women and Youth Empowerment',	'EA 08'),
-(46 , 'CCI: Management Framework',					'EA 09'),
-(47 , 'CCI: Culture and Sport',						'EA 10');
+(45 , 'CCI: Democracy, Human Rights, Justice, Law',	'EA 08'),
+(46 , 'CCI: Gender, Women and Youth Empowerment',	'EA 09'),
+(47 , 'CCI: Management Framework',					'EA 10'),
+(48 , 'CCI: Culture and Sport',						'EA 11'),
+(49 , 'ENA: Education and Health',					'EA 12');
 
 go
 
