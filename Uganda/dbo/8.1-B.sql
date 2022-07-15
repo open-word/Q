@@ -1,18 +1,18 @@
 use Uganda;
 go
 
-create table Bottlenecks
+create table B
 (
 	BottleneckID int,
 	Name nvarchar(250),
 	Ref nchar(2),
-	constraint PK_Bottlenecks primary key (BottleneckID),
-	constraint UQ_Bottlenecks_Name unique (Name),
-	constraint UQ_Bottlenecks_Ref unique (Ref)
+	constraint PK_B primary key (BottleneckID),
+	constraint UQ_B_Name unique (Name),
+	constraint UQ_B_Ref unique (Ref)
 );
 go
 
-insert Bottlenecks (BottleneckID, Name, Ref) values
+insert B (BottleneckID, Name, Ref) values
 (1  ,'Ideological Disorientation',							'01'),
 (2  ,'Interference with the Private Sector',				'02'),
 (3  ,'Underdeveloped Infrastructure',						'03'),
@@ -28,7 +28,7 @@ insert Bottlenecks (BottleneckID, Name, Ref) values
 (13 ,'Structural Inequalities in Access to Opportunities',	'13');
 go
 
---select * from Bottlenecks;
+--select * from B;
 
 select '8.1'
 go
