@@ -1,8 +1,12 @@
 use Uganda;
 go
 
-drop table if exists BottlenecksP;
+drop table if exists GP;
+drop table if exists FG;
+drop table if exists G;
+drop table if exists F;
 
+drop table if exists BottlenecksP;
 drop table if exists Bottlenecks;
 
 drop view if exists Vision2040;
