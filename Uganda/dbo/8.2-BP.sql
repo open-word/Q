@@ -1,16 +1,16 @@
 use Uganda;
 go
 
-create table BottlenecksP
+create table BP
 (
 	BottleneckRef nchar(2),
 	ProgrammeReference nchar(2),
-	constraint PK_BottlenecksP primary key (BottleneckRef, ProgrammeReference),
-	constraint FK_BottlenecksP_Bottlenecks foreign key (BottleneckRef) references Bottlenecks (Ref),
-	constraint FK_BottlenecksP_P foreign key (ProgrammeReference) references P (Reference)
+	constraint PK_BP primary key (BottleneckRef, ProgrammeReference),
+	constraint FK_BP_B foreign key (BottleneckRef) references B (Ref),
+	constraint FK_BP_P foreign key (ProgrammeReference) references P (Reference)
 );
 
-insert BottlenecksP (BottleneckRef, ProgrammeReference) values
+insert BP (BottleneckRef, ProgrammeReference) values
 ('01','14'),
 
 ('02','06'),
@@ -59,7 +59,7 @@ insert BottlenecksP (BottleneckRef, ProgrammeReference) values
 ('13','14'),
 ('13','12');
 
---select * from BottlenecksP;
+--select * from BP;
 
 --select '8.2'
 --go
@@ -68,8 +68,8 @@ insert BottlenecksP (BottleneckRef, ProgrammeReference) values
 --	b.Name, 
 --	p.Name
 --from
---	BottlenecksP bp join
---	Bottlenecks b on bp.BottleneckRef = b.Ref join
+--	BP join
+--	B on bp.BottleneckRef = b.Ref join
 --	P on bp.ProgrammeReference = p.Reference
 --order by
 --	b.BottleneckID;

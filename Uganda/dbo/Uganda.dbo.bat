@@ -33,8 +33,8 @@ sqlcmd -i 6.1-Tests.sql
 
 sqlcmd -i 7.1-Vision2040.sql
 
-sqlcmd -i 8.1-Bottlenecks.sql
-sqlcmd -i 8.2-BottlenecksP.sql
+sqlcmd -i 8.1-B.sql
+sqlcmd -i 8.2-BP.sql
 
 sqlcmd -i 9.1-F.sql
 sqlcmd -i 9.2-G.sql
