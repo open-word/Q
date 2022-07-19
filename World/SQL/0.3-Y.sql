@@ -11,7 +11,7 @@ create table Y
 );
 go
 
-declare @YearID int = 2010;
+declare @YearID int = 2000;
 while @YearID <= 2022
 begin
 	insert Y (YearID, Code) values (@YearID, convert(char(4),@YearID));
