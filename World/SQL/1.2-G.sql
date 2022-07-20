@@ -10,20 +10,23 @@ create table G
 	Title nvarchar(188),
 	Description nvarchar(460),
 	Uri nvarchar(15),
+	FrameworkCode nvarchar(5),
 	constraint PK_G primary key (GoalID),
 	constraint UQ_G_Code unique (Code),
 	constraint UQ_G_Title unique (Title),
 	constraint UQ_G_Description unique (Description),
-	constraint UQ_G_Uri unique (Uri)
+	constraint UQ_G_Uri unique (Uri),
+	constraint FK_G_F foreign key (FrameworkCode) references F (Code)
 );
 go
 
-insert G (Code, Title, Description, Uri)
+insert G (Code, Title, Description, Uri, FrameworkCode)
 select
 	convert(nvarchar(2),cte.Code) [Code],
 	convert(nvarchar(188),cte.Title) [Title],
 	convert(nvarchar(460),cte.Description) [Description],
-	convert(nvarchar(15),cte.Uri) [Uri]
+	convert(nvarchar(15),cte.Uri) [Uri],
+	'World'
 from
 	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Goal_List.json', single_clob) as j
 	cross apply openjson(BulkColumn)
@@ -57,7 +60,7 @@ update G set Name = 'Partnerships for the goals' where GoalID = 17;
 
 --select * from G;
 
-select '1.1'
+select '1.2'
 go
 
 --https://unstats.un.org/SDGAPI/v1/sdg/Series/List?allreleases=false

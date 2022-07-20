@@ -43,7 +43,7 @@ order by
 
 --select * from T;
 
-select '1.2'
+select '1.3'
 go
 
 --https://unstats.un.org/SDGAPI/v1/sdg/Series/List?allreleases=false
