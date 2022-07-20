@@ -1,7 +1,6 @@
 use World;
 go
-drop table if exists A;
-go
+
 create table A
 (
 	AreaID int identity,

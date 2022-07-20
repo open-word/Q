@@ -1,7 +1,6 @@
 use World;
 go
-drop table if exists [IS];
-go
+
 create table [IS]
 (
 	IndicatorCode nvarchar(7),

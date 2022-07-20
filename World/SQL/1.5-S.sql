@@ -1,7 +1,6 @@
 use World;
 go
-drop table if exists S;
-go
+
 create table S
 (
 	SeriesID int identity,

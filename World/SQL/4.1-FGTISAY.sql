@@ -1,7 +1,6 @@
 use World;
 go
-drop table if exists FGTISAY;
-go
+
 create table FGTISAY
 (
 	FrameworkCode nvarchar(5),
@@ -43,7 +42,7 @@ order by
 
 --select * from FGTISAY;
 
-select '3.1'
+select '4.1'
 go
 
 --select * from 

@@ -9,7 +9,8 @@ sqlcmd -i 1.3-T.sql
 sqlcmd -i 1.4-I.sql
 sqlcmd -i 1.5-S.sql
 sqlcmd -i 2.3-IS.sql
-sqlcmd -i 3.1-FGTISAY.sql
-sqlcmd -i 3.2-FGTISAYV.sql
-REM sqlcmd -i 3.3-FGTISAYQ.sql
+sqlcmd -i 3.1-R.sql
+sqlcmd -i 4.1-FGTISAY.sql
+sqlcmd -i 4.2-FGTISAYWeightCoverage.sql
+sqlcmd -i 5.1-Tests.sql
 PAUSE

@@ -1,7 +1,6 @@
 use World;
 go
-drop table if exists F;
-go
+
 create table F
 (
 	FrameworkID int,

@@ -1,9 +1,12 @@
 use World;
 go
 
-drop table if exists FGTISAYQ;
-drop table if exists FGTISAYV;
+drop table if exists Tests;
+
+drop table if exists FGTISAYWeightCoverage;
 drop table if exists FGTISAY;
+
+drop table if exists R;
 
 drop table if exists [IS];
 
