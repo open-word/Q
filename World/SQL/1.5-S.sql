@@ -46,7 +46,7 @@ order by
 
 --select * from S;
 
-select '1.4'
+select '1.5'
 go
 
 --https://unstats.un.org/SDGAPI/v1/sdg/Series/List?allreleases=false
