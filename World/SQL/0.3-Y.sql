@@ -1,7 +1,6 @@
 use World;
 go
-drop table if exists Y;
-go
+
 create table Y
 (
 	YearID int,

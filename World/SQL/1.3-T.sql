@@ -1,7 +1,6 @@
 use World;
 go
-drop table if exists T;
-go
+
 create table T
 (
 	TargetID int identity,

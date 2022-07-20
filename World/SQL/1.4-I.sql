@@ -1,7 +1,6 @@
 use World;
 go
-drop table if exists I;
-go
+
 create table I
 (
 	IndicatorID int identity,
