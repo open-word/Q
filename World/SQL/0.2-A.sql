@@ -5,8 +5,11 @@ create table A
 (
 	AreaID int identity,
 	Code int,
-	Name nvarchar(92)
+	Name nvarchar(92),
+	Type nvarchar(19),
 	constraint PK_A primary key (AreaID),
+
+
 	constraint UQ_A_Code unique (Code),
 	constraint UQ_A_Name unique (Name)
 );
@@ -29,8 +32,8 @@ order by
 
 --select * from A;
 
---select '1.1'
---go
+select '0.2'
+go
 
 --https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List?allreleases=false
 

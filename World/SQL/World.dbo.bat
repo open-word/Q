@@ -2,7 +2,8 @@
 
 sqlcmd -i 0.1.sql
 sqlcmd -i 0.2-A.sql
-sqlcmd -i 0.3-Y.sql
+sqlcmd -i 0.3-AType.sql
+sqlcmd -i 0.4-Y.sql
 sqlcmd -i 1.1-F.sql
 sqlcmd -i 1.2-G.sql
 sqlcmd -i 1.3-T.sql
