@@ -3,30 +3,29 @@ go
 
 create table S
 (
-	SeriesID int identity,
-	Code nvarchar(20),
-	Description nvarchar(261),
-	Uri nvarchar(35),
-	Release nvarchar(12),
-	Goals nvarchar(15),
-	Targets nvarchar(21),
-	Indicators nvarchar(27),
-	constraint PK_S primary key (SeriesID),
-	constraint UQ_S_Code unique (Code),
-	constraint UQ_S_Description unique (Description),
-	constraint UQ_S_Uri unique (Uri)
+	SCode nvarchar(20),
+	SDescription nvarchar(261),
+	SUri nvarchar(35),
+	SRelease nvarchar(12),
+	SGoals nvarchar(15),
+	STargets nvarchar(21),
+	SIndicators nvarchar(27),
+	SPoints decimal(18,8) default 1,
+	constraint PK_S primary key (SCode),
+	constraint UQ_S_SDescription unique (SDescription),
+	constraint UQ_S_SUri unique (SUri)
 );
 go
 
-insert S (Code, Description, Uri, Release, Goals, Targets, Indicators)
+insert S (SCode, SDescription, SUri, SRelease, SGoals, STargets, SIndicators)
 select
-	convert(nvarchar(20),cte.Code) [Code],
-	convert(nvarchar(261),cte.Description) [Description],
-	convert(nvarchar(35),cte.Uri) [Uri],
-	convert(nvarchar(12),cte.Release) [Release],
-	replace(replace(replace(cte.Goal,'[',''),'"',''),']','') [Goals],
-	replace(replace(replace(cte.Target,'[',''),'"',''),']','') [Targets],
-	replace(replace(replace(cte.Indicator,'[',''),'"',''),']','') [Indicators]
+	convert(nvarchar(20),cte.Code),
+	convert(nvarchar(261),cte.Description),
+	convert(nvarchar(35),cte.Uri),
+	convert(nvarchar(12),cte.Release),
+	replace(replace(replace(cte.Goal,'[',''),'"',''),']',''),
+	replace(replace(replace(cte.Target,'[',''),'"',''),']',''),
+	replace(replace(replace(cte.Indicator,'[',''),'"',''),']','')
 from
 	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Series_List.json', single_clob) as j
 	cross apply openjson(BulkColumn)

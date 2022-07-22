@@ -3,29 +3,27 @@ go
 
 create table T
 (
-	TargetID int identity,
-	Code nvarchar(5),
-	Title nvarchar(564),
-	Description nvarchar(564),
-	Uri nvarchar(20),
-	GoalCode nvarchar(2),
-	constraint PK_T primary key (TargetID),
-	constraint UQ_T_Code unique (Code),
-	constraint UQ_T_Title unique (Title),
-	constraint UQ_T_Description unique (Description),
-	constraint UQ_T_Uri unique (Uri),
-	constraint FK_T_G foreign key (GoalCode) references G (Code),
-	index IX_T_Goal (GoalCode)
+	TCode nvarchar(5),
+	TTitle nvarchar(564),
+	TDescription nvarchar(564),
+	TUri nvarchar(20),
+	TPoints decimal(18,8) default 1,
+	GCode nchar(2),
+	constraint PK_T primary key (TCode),
+	constraint UQ_T_TTitle unique (TTitle),
+	constraint UQ_T_TDescription unique (TDescription),
+	constraint UQ_T_TUri unique (TUri),
+	constraint FK_T_G foreign key (GCode) references G (GCode)
 );
 go
 
-insert T (Code, Title, Description, Uri, GoalCode)
+insert T (TCode, TTitle, TDescription, TUri, GCode)
 select
-	convert(nvarchar(5),cte.Code) [Code],
-	convert(nvarchar(564),cte.Title) [Title],
-	convert(nvarchar(564),cte.Description) [Description],
-	convert(nvarchar(20),cte.Uri) [Uri],
-	convert(nvarchar(2),cte.Goal) [GoalCode]
+	dbo.PadCode(cte.code),
+	cte.Title,
+	cte.Description,
+	cte.Uri,
+	dbo.PadCode(cte.goal)
 from
 	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Target_List.json', single_clob) as j
 	cross apply openjson(BulkColumn)
@@ -38,7 +36,7 @@ with
 		goal nvarchar(max)
 	) as cte
 order by
-	cte.Code;
+	dbo.PadCode(cte.code);
 
 --select * from T;
 

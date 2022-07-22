@@ -3,29 +3,26 @@ go
 
 create table I
 (
-	IndicatorID int identity,
-	Code nvarchar(7),
-	Description nvarchar(441),
-	Tier nvarchar(1),
-	Uri nvarchar(25),
-	TargetCode nvarchar(5),
-	constraint PK_I primary key (IndicatorID),
-	constraint UQ_I_Code unique (Code),
-	--constraint UQ_I_Description unique (Description), -- Some indicators repeat (Description repeats, Code does not repeat).
-	constraint UQ_I_Uri unique (Uri),
-	constraint FK_I_T foreign key (TargetCode) references T (Code),
-	index IX_I_TargetCode (TargetCode)
+	ICode nvarchar(8),
+	IDescription nvarchar(441),
+	ITier nvarchar(1),
+	IUri nvarchar(25),
+	IPoints decimal(18,8) default 1,
+	TCode nvarchar(5),
+	constraint PK_I primary key (ICode),
+	--constraint UQ_I_IDescription unique (IDescription), -- Some indicators repeat (Description repeats, Code does not repeat).
+	constraint UQ_I_IUri unique (IUri),
+	constraint FK_I_T foreign key (TCode) references T (TCode)
 );
 go
 
-insert I (Code, Description, Tier, Uri, TargetCode)
+insert I (ICode, IDescription, ITier, IUri, TCode)
 select
-	convert(nvarchar(7),cte.Code) [Code],
-	convert(nvarchar(441),cte.Description) [Description],
-	convert(nvarchar(1),cte.Tier) [Tier],
-	convert(nvarchar(25),cte.Uri) [Uri],
-	--convert(nvarchar(2),cte.Goal) [Goal],
-	convert(nvarchar(5),cte.Target) [TargetCode]
+	dbo.PadCode(cte.code),
+	cte.Description,
+	cte.Tier,
+	cte.Uri,
+	dbo.PadCode(cte.Target)
 from
 	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Indicator_List.json', single_clob) as j
 	cross apply openjson(BulkColumn)
@@ -35,11 +32,10 @@ with
 		description nvarchar(max),
 		tier nvarchar(max),
 		uri nvarchar(max),
-		--goal nvarchar(max),
 		target nvarchar(max)
 	) as cte
 order by
-	cte.Code;
+	dbo.PadCode(cte.code);
 
 --select * from I;
 

@@ -3,15 +3,14 @@ go
 
 create table F
 (
-	FrameworkID int,
-	Code nvarchar(5),
-	constraint PK_F primary key (FrameworkID),
-	constraint UQ_F_Code unique (Code)
+	FCode nchar(5),
+	FPoints decimal(18,8) default 1,
+	constraint PK_F primary key (FCode),
 );
 go
 
-insert F (FrameworkID, Code) values
-(1,'World');
+insert F (FCode) values
+('World');
 
 --select * from F;
 

@@ -4,9 +4,10 @@ go
 drop table if exists Tests;
 
 drop table if exists FGTISAYWeightCoverage;
-drop table if exists FGTISAY;
 
 drop table if exists R;
+
+drop table if exists FGTISAY;
 
 drop table if exists [IS];
 
@@ -19,5 +20,7 @@ drop table if exists F;
 drop table if exists Y;
 drop table if exists A;
 
-select '0.1';
+drop function if exists PadCode;
+
+select '0.0';
 go

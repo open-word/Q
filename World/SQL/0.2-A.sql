@@ -3,22 +3,19 @@ go
 
 create table A
 (
-	AreaID int identity,
-	Code int,
-	Name nvarchar(92),
-	Type nvarchar(19),
-	constraint PK_A primary key (AreaID),
-
-
-	constraint UQ_A_Code unique (Code),
-	constraint UQ_A_Name unique (Name)
+	ACode nchar(3),
+	AName nvarchar(92),
+	AType nvarchar(19),
+	APoints decimal(18,8) default 1,
+	constraint PK_A primary key (ACode),
+	constraint UQ_A_AName unique (AName)
 );
 go
 
-insert A(Code, Name)
+insert A(ACode, AName)
 select
-	cte.geoAreaCode [Code],
-	convert(nvarchar(92),cte.geoAreaName) [Name]
+	format(cte.geoAreaCode,'D3'),
+	convert(nvarchar(92),cte.geoAreaName)
 from
 	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\GeoArea_List.json', single_clob) as j
 	cross apply openjson(BulkColumn)
@@ -27,8 +24,10 @@ with
 		geoAreaCode int,
 		geoAreaName nvarchar(max)
 	) as cte
+where
+	geoAreaCode <= 999
 order by
-	cte.geoAreaCode;
+	geoAreaCode;
 
 --select * from A;
 
