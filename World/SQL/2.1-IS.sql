@@ -3,22 +3,22 @@ go
 
 create table [IS]
 (
-	IndicatorCode nvarchar(8),
-	SeriesCode nvarchar(20),
-	constraint PK_IS primary key (IndicatorCode, SeriesCode),
-	constraint FK_IS_I foreign key (IndicatorCode) references I (IndicatorCode),
-	constraint FK_IS_S foreign key (SeriesCode) references S (SeriesCode)
+	ICode nvarchar(8),
+	SCode nvarchar(20),
+	constraint PK_IS primary key (ICode, SCode),
+	constraint FK_IS_I foreign key (ICode) references I (ICode),
+	constraint FK_IS_S foreign key (SCode) references S (SCode)
 );
 
-insert [IS] (IndicatorCode, SeriesCode)
+insert [IS] (ICode, SCode)
 select
-	dbo.PadCode(i.Value) [IndicatorCode],
-	S.SeriesCode [SeriesCode]
+	dbo.PadCode(i.Value) [ICode],
+	S.SCode [SCode]
 from
-	S cross apply string_split(S.Indicators,',') i
+	S cross apply string_split(S.SIndicators,',') i
 order by 
-	IndicatorCode,
-	SeriesCode;
+	ICode,
+	SCode;
 
 --select * from [IS];
 

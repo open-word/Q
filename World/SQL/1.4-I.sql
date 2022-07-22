@@ -3,19 +3,19 @@ go
 
 create table I
 (
-	IndicatorCode nvarchar(8),
-	Description nvarchar(441),
-	Tier nvarchar(1),
-	Uri nvarchar(25),
-	TargetCode nvarchar(5),
-	constraint PK_I primary key (IndicatorCode),
-	--constraint UQ_I_Description unique (Description), -- Some indicators repeat (Description repeats, Code does not repeat).
-	constraint UQ_I_Uri unique (Uri),
-	constraint FK_I_T foreign key (TargetCode) references T (TargetCode)
+	ICode nvarchar(8),
+	IDescription nvarchar(441),
+	ITier nvarchar(1),
+	IUri nvarchar(25),
+	TCode nvarchar(5),
+	constraint PK_I primary key (ICode),
+	--constraint UQ_I_IDescription unique (IDescription), -- Some indicators repeat (Description repeats, Code does not repeat).
+	constraint UQ_I_IUri unique (IUri),
+	constraint FK_I_T foreign key (TCode) references T (TCode)
 );
 go
 
-insert I (IndicatorCode, Description, Tier, Uri, TargetCode)
+insert I (ICode, IDescription, ITier, IUri, TCode)
 select
 	dbo.PadCode(cte.code),
 	cte.Description,

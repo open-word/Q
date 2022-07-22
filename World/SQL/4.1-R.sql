@@ -9,36 +9,36 @@ go
 
 create table R
 (
-	FrameworkCode nchar(5),
-	GoalCode nchar(2),
-	TargetCode nvarchar(5),
-	IndicatorCode nvarchar(8),
-	SeriesCode nvarchar(20),
-	AreaCode nchar(3),
-	YearCode nchar(4),
-	constraint PK_R primary key (FrameworkCode, GoalCode, TargetCode, IndicatorCode, SeriesCode, AreaCode, YearCode),
-	constraint FK_R_FGTISAY foreign key (FrameworkCode, GoalCode, TargetCode, IndicatorCode, SeriesCode, AreaCode, YearCode) references FGTISAY (FrameworkCode, GoalCode, TargetCode, IndicatorCode, SeriesCode, AreaCode, YearCode)
+	FCode nchar(5),
+	GCode nchar(2),
+	TCode nvarchar(5),
+	ICode nvarchar(8),
+	SCode nvarchar(20),
+	ACode nchar(3),
+	YCode nchar(4),
+	constraint PK_R primary key (FCode, GCode, TCode, ICode, SCode, ACode, YCode),
+	constraint FK_R_FGTISAY foreign key (FCode, GCode, TCode, ICode, SCode, ACode, YCode) references FGTISAY (FCode, GCode, TCode, ICode, SCode, ACode, YCode)
 );
 
-insert R (FrameworkCode, GoalCode, TargetCode, IndicatorCode, SeriesCode, AreaCode, YearCode)
+insert R (FCode, GCode, TCode, ICode, SCode, ACode, YCode)
 select distinct
-	'World'						[FrameworkCode],
-	dbo.PadCode(Goal)			[GoalCode],
-	dbo.PadCode(Target)			[TargetCode],
-	dbo.PadCode(Indicator)		[IndicatorCode],
-	dbo.PadCode(Series)			[SeriesCode],
-	format(GeoAreaCode,'D3')	[AreaCode],
-	TimePeriod					[TimePeriod]
+	'World'						[FCode],
+	dbo.PadCode(Goal)			[GCode],
+	dbo.PadCode(Target)			[TCode],
+	dbo.PadCode(Indicator)		[ICode],
+	dbo.PadCode(Series)			[SCode],
+	format(GeoAreaCode,'D3')	[ACode],
+	TimePeriod					[YCode]
 from
 	Records
 order by
-	[FrameworkCode],
-	[GoalCode],
-	[TargetCode],
-	[IndicatorCode],
-	[SeriesCode],
-	[AreaCode],
-	[TimePeriod];
+	[FCode],
+	[GCode],
+	[TCode],
+	[ICode],
+	[SCode],
+	[ACode],
+	[YCode];
 go
 
 --select * from R;

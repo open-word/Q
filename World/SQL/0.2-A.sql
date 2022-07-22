@@ -3,15 +3,15 @@ go
 
 create table A
 (
-	AreaCode nchar(3),
-	Name nvarchar(92),
-	Type nvarchar(19),
-	constraint PK_A primary key (AreaCode),
-	constraint UQ_A_Name unique (Name)
+	ACode nchar(3),
+	AName nvarchar(92),
+	AType nvarchar(19),
+	constraint PK_A primary key (ACode),
+	constraint UQ_A_AName unique (AName)
 );
 go
 
-insert A(AreaCode, Name)
+insert A(ACode, AName)
 select
 	format(cte.geoAreaCode,'D3'),
 	convert(nvarchar(92),cte.geoAreaName)

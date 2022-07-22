@@ -3,21 +3,21 @@ go
 
 create table G
 (
-	GoalCode nchar(2),
-	Name nvarchar(100),
-	Title nvarchar(188),
-	Description nvarchar(460),
-	Uri nvarchar(15),
-	FrameworkCode nchar(5),
-	constraint PK_G primary key (GoalCode),
-	constraint UQ_G_Title unique (Title),
-	constraint UQ_G_Description unique (Description),
-	constraint UQ_G_Uri unique (Uri),
-	constraint FK_G_F foreign key (FrameworkCode) references F (FrameworkCode)
+	GCode nchar(2),
+	GName nvarchar(100),
+	GTitle nvarchar(188),
+	GDescription nvarchar(460),
+	GUri nvarchar(15),
+	FCode nchar(5),
+	constraint PK_G primary key (GCode),
+	constraint UQ_G_GTitle unique (GTitle),
+	constraint UQ_G_GDescription unique (GDescription),
+	constraint UQ_G_GUri unique (GUri),
+	constraint FK_G_F foreign key (FCode) references F (FCode)
 );
 go
 
-insert G (GoalCode, Title, Description, Uri, FrameworkCode)
+insert G (GCode, GTitle, GDescription, GUri, FCode)
 select
 	dbo.PadCode(cte.code),
 	cte.Title,
@@ -37,23 +37,23 @@ with
 order by
 	dbo.PadCode(cte.code);
 
-update G set Name = 'No poverty' where GoalCode = '01';
-update G set Name = 'Zero hunger' where GoalCode = '02';
-update G set Name = 'Good health and well-being' where GoalCode = '03';
-update G set Name = 'Quality education' where GoalCode = '04';
-update G set Name = 'Gender equality' where GoalCode = '05';
-update G set Name = 'Clean water and sanitation' where GoalCode = '06';
-update G set Name = 'Affordable and clean energy' where GoalCode = '07';
-update G set Name = 'Decent work and economic growth' where GoalCode = '08';
-update G set Name = 'Industry, innovation and infrastructure' where GoalCode = '09';
-update G set Name = 'Reduced inequalities' where GoalCode = '10';
-update G set Name = 'Sustainable cities and communities' where GoalCode = '11';
-update G set Name = 'Responsible consumption and production' where GoalCode = '12';
-update G set Name = 'Climate action' where GoalCode = '13';
-update G set Name = 'Life below water' where GoalCode = '14';
-update G set Name = 'Life on land' where GoalCode = '15';
-update G set Name = 'Peace, justice and strong institutions' where GoalCode = '16';
-update G set Name = 'Partnerships for the goals' where GoalCode = '17';
+update G set GName = 'No poverty' where GCode = '01';
+update G set GName = 'Zero hunger' where GCode = '02';
+update G set GName = 'Good health and well-being' where GCode = '03';
+update G set GName = 'Quality education' where GCode = '04';
+update G set GName = 'Gender equality' where GCode = '05';
+update G set GName = 'Clean water and sanitation' where GCode = '06';
+update G set GName = 'Affordable and clean energy' where GCode = '07';
+update G set GName = 'Decent work and economic growth' where GCode = '08';
+update G set GName = 'Industry, innovation and infrastructure' where GCode = '09';
+update G set GName = 'Reduced inequalities' where GCode = '10';
+update G set GName = 'Sustainable cities and communities' where GCode = '11';
+update G set GName = 'Responsible consumption and production' where GCode = '12';
+update G set GName = 'Climate action' where GCode = '13';
+update G set GName = 'Life below water' where GCode = '14';
+update G set GName = 'Life on land' where GCode = '15';
+update G set GName = 'Peace, justice and strong institutions' where GCode = '16';
+update G set GName = 'Partnerships for the goals' where GCode = '17';
 
 --select * from G;
 

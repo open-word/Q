@@ -91,9 +91,9 @@ as
 update
 	A
 set
-	A.Type = cte2.Type
+	A.AType = cte2.Type
 from
-	A left join cte2 on A.Name = cte2.Name;
+	A left join cte2 on A.AName = cte2.Name;
 go
 
 --select * from A;

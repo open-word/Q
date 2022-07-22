@@ -3,16 +3,16 @@ go
 
 create table Y
 (
-	YearCode nchar(4),
-	constraint PK_Y primary key (YearCode)
+	YCode nchar(4),
+	constraint PK_Y primary key (YCode)
 );
 go
 
-declare @YearCode int = 2000;
-while @YearCode <= 2022
+declare @YCode int = 2000;
+while @YCode <= 2022
 begin
-	insert Y (YearCode) values (convert(char(4),@YearCode));
-	set @YearCode = @YearCode + 1;
+	insert Y (YCode) values (convert(char(4),@YCode));
+	set @YCode = @YCode + 1;
 end
 
 --select * from Y;

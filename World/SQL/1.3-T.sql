@@ -3,20 +3,20 @@ go
 
 create table T
 (
-	TargetCode nvarchar(5),
-	Title nvarchar(564),
-	Description nvarchar(564),
-	Uri nvarchar(20),
-	GoalCode nchar(2),
-	constraint PK_T primary key (TargetCode),
-	constraint UQ_T_Title unique (Title),
-	constraint UQ_T_Description unique (Description),
-	constraint UQ_T_Uri unique (Uri),
-	constraint FK_T_G foreign key (GoalCode) references G (GoalCode)
+	TCode nvarchar(5),
+	TTitle nvarchar(564),
+	TDescription nvarchar(564),
+	TUri nvarchar(20),
+	GCode nchar(2),
+	constraint PK_T primary key (TCode),
+	constraint UQ_T_TTitle unique (TTitle),
+	constraint UQ_T_TDescription unique (TDescription),
+	constraint UQ_T_TUri unique (TUri),
+	constraint FK_T_G foreign key (GCode) references G (GCode)
 );
 go
 
-insert T (TargetCode, Title, Description, Uri, GoalCode)
+insert T (TCode, TTitle, TDescription, TUri, GCode)
 select
 	dbo.PadCode(cte.code),
 	cte.Title,

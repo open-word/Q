@@ -3,12 +3,12 @@ go
 
 create table F
 (
-	FrameworkCode nchar(5),
-	constraint PK_F primary key (FrameworkCode),
+	FCode nchar(5),
+	constraint PK_F primary key (FCode),
 );
 go
 
-insert F (FrameworkCode) values
+insert F (FCode) values
 ('World');
 
 --select * from F;
