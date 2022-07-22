@@ -10,6 +10,7 @@ create table S
 	SGoals nvarchar(15),
 	STargets nvarchar(21),
 	SIndicators nvarchar(27),
+	SPoints decimal(18,8) default 1,
 	constraint PK_S primary key (SCode),
 	constraint UQ_S_SDescription unique (SDescription),
 	constraint UQ_S_SUri unique (SUri)

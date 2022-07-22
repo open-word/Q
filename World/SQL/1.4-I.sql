@@ -7,6 +7,7 @@ create table I
 	IDescription nvarchar(441),
 	ITier nvarchar(1),
 	IUri nvarchar(25),
+	IPoints decimal(18,8) default 1,
 	TCode nvarchar(5),
 	constraint PK_I primary key (ICode),
 	--constraint UQ_I_IDescription unique (IDescription), -- Some indicators repeat (Description repeats, Code does not repeat).

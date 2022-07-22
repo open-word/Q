@@ -7,6 +7,7 @@ create table T
 	TTitle nvarchar(564),
 	TDescription nvarchar(564),
 	TUri nvarchar(20),
+	TPoints decimal(18,8) default 1,
 	GCode nchar(2),
 	constraint PK_T primary key (TCode),
 	constraint UQ_T_TTitle unique (TTitle),

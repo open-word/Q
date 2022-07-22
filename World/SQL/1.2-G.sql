@@ -8,6 +8,7 @@ create table G
 	GTitle nvarchar(188),
 	GDescription nvarchar(460),
 	GUri nvarchar(15),
+	GPoints decimal(18,8) default 1,
 	FCode nchar(5),
 	constraint PK_G primary key (GCode),
 	constraint UQ_G_GTitle unique (GTitle),

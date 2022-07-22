@@ -6,6 +6,7 @@ create table A
 	ACode nchar(3),
 	AName nvarchar(92),
 	AType nvarchar(19),
+	APoints decimal(18,8) default 1,
 	constraint PK_A primary key (ACode),
 	constraint UQ_A_AName unique (AName)
 );
