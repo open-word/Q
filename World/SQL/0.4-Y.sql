@@ -3,18 +3,16 @@ go
 
 create table Y
 (
-	YearID int,
-	Code nchar(4),
-	constraint PK_Y primary key (YearID),
-	constraint UQ_Y_Code unique (Code)
+	YearCode nchar(4),
+	constraint PK_Y primary key (YearCode)
 );
 go
 
-declare @YearID int = 2000;
-while @YearID <= 2022
+declare @YearCode int = 2000;
+while @YearCode <= 2022
 begin
-	insert Y (YearID, Code) values (@YearID, convert(char(4),@YearID));
-	set @YearID = @YearID + 1;
+	insert Y (YearCode) values (convert(char(4),@YearCode));
+	set @YearCode = @YearCode + 1;
 end
 
 --select * from Y;

@@ -3,17 +3,17 @@ go
 
 create table [IS]
 (
-	IndicatorCode nvarchar(7),
+	IndicatorCode nvarchar(8),
 	SeriesCode nvarchar(20),
 	constraint PK_IS primary key (IndicatorCode, SeriesCode),
-	constraint FK_IS_I foreign key (IndicatorCode) references I (Code),
-	constraint FK_IS_S foreign key (SeriesCode) references S (Code)
+	constraint FK_IS_I foreign key (IndicatorCode) references I (IndicatorCode),
+	constraint FK_IS_S foreign key (SeriesCode) references S (SeriesCode)
 );
 
 insert [IS] (IndicatorCode, SeriesCode)
 select
-	i.Value [IndicatorCode],
-	S.Code [SeriesCode]
+	dbo.PadCode(i.Value) [IndicatorCode],
+	S.SeriesCode [SeriesCode]
 from
 	S cross apply string_split(S.Indicators,',') i
 order by 
@@ -22,5 +22,5 @@ order by
 
 --select * from [IS];
 
-select '2.3';
+select '2.1';
 go
