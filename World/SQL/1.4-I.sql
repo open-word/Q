@@ -7,7 +7,8 @@ create table I
 	IDescription nvarchar(441),
 	ITier nvarchar(1),
 	IUri nvarchar(25),
-	IPoints decimal(18,8) default 1,
+	IPoints float default 1,
+	IInstance int,
 	TCode nvarchar(5),
 	constraint PK_I primary key (ICode),
 	--constraint UQ_I_IDescription unique (IDescription), -- Some indicators repeat (Description repeats, Code does not repeat).
@@ -36,6 +37,12 @@ with
 	) as cte
 order by
 	dbo.PadCode(cte.code);
+
+-- ---------------------------------------------------------------------------------------------
+-- Missing I.
+-- ---------------------------------------------------------------------------------------------
+
+insert I (ICode, IDescription, TCode) values ('11.c.M', 'Missing (there is no indicator for target 11.c)', '11.c');
 
 --select * from I;
 

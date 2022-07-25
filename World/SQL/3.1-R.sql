@@ -9,13 +9,13 @@ go
 
 create table R
 (
-	FCode nchar(5),
-	GCode nchar(2),
+	FCode nvarchar(5),
+	GCode nvarchar(2),
 	TCode nvarchar(5),
 	ICode nvarchar(8),
 	SCode nvarchar(20),
-	ACode nchar(3),
-	YCode nchar(4),
+	ACode nvarchar(5),
+	YCode nvarchar(4),
 	constraint PK_R primary key (FCode, GCode, TCode, ICode, SCode, ACode, YCode),
 	constraint FK_R_FGTISAY foreign key (FCode, GCode, TCode, ICode, SCode, ACode, YCode) references FGTISAY (FCode, GCode, TCode, ICode, SCode, ACode, YCode)
 );
@@ -43,5 +43,5 @@ go
 
 --select * from R;
 
-select '4.1';
+select '3.1';
 go

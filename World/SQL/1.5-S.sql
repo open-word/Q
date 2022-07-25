@@ -10,10 +10,9 @@ create table S
 	SGoals nvarchar(15),
 	STargets nvarchar(21),
 	SIndicators nvarchar(27),
-	SPoints decimal(18,8) default 1,
+	SPoints float default 1,
 	constraint PK_S primary key (SCode),
-	constraint UQ_S_SDescription unique (SDescription),
-	constraint UQ_S_SUri unique (SUri)
+	constraint UQ_S_SDescription unique (SDescription)
 );
 go
 
@@ -41,6 +40,26 @@ with
 	) as cte
 order by
 	cte.Code;
+
+-- ---------------------------------------------------------------------------------------------
+-- M S.
+-- ---------------------------------------------------------------------------------------------
+
+insert S (SCode, SDescription) values 
+('01.b.01.M',	'Missing (there is no series for indicator 01.b.01)'),
+('02.04.01.M',	'Missing (there is no series for indicator 02.04.01)'),
+('05.02.02.M',	'Missing (there is no series for indicator 05.02.02)'),
+('11.03.01.M',	'Missing (there is no series for indicator 11.03.01)'),
+('11.03.02.M',	'Missing (there is no series for indicator 11.03.02)'),
+('11.07.02.M',	'Missing (there is no series for indicator 11.07.02)'),
+('11.c.M.M',	'Missing (there is no series for target 11.c)'),
+('15.07.01.M',	'Missing (there is no series for indicator 15.07.01)'),
+('15.c.01.M',	'Missing (there is no series for indicator 15.c.01)'),
+('16.03.03.M',	'Missing (there is no series for indicator 16.03.03)'),
+('16.04.01.M',	'Missing (there is no series for indicator 16.04.01)'),
+('16.06.02.M',	'Missing (there is no series for indicator 16.06.02)'),
+('16.07.02.M',	'Missing (there is no series for indicator 16.07.02)'),
+('17.18.01.M',	'Missing (there is no series for indicator 17.18.01)');
 
 --select * from S;
 

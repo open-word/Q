@@ -3,14 +3,15 @@ go
 
 create table F
 (
-	FCode nchar(5),
-	FPoints decimal(18,8) default 1,
+	FCode nvarchar(5),
+	FPoints float,
+	FWeight float,
 	constraint PK_F primary key (FCode),
 );
 go
 
-insert F (FCode) values
-('World');
+insert F (FCode, FPoints, FWeight) values
+('World', 1, 1);
 
 --select * from F;
 
