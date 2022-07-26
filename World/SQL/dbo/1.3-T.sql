@@ -20,9 +20,9 @@ go
 insert T (TCode, TTitle, TDescription, TUri, GCode)
 select
 	dbo.PadCode(cte.code),
-	cte.Title,
-	cte.Description,
-	cte.Uri,
+	cte.title,
+	dbo.CleanString(cte.description),
+	cte.uri,
 	dbo.PadCode(cte.goal)
 from
 	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Target_List.json', single_clob) as j

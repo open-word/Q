@@ -21,9 +21,9 @@ go
 insert G (GCode, GTitle, GDescription, GUri, FCode)
 select
 	dbo.PadCode(cte.code),
-	cte.Title,
-	cte.Description,
-	cte.Uri,
+	cte.title,
+	dbo.CleanString(cte.description),
+	cte.uri,
 	'World'
 from
 	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Goal_List.json', single_clob) as j

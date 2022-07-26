@@ -20,10 +20,10 @@ go
 insert I (ICode, IDescription, ITier, IUri, TCode)
 select
 	dbo.PadCode(cte.code),
-	cte.Description,
-	cte.Tier,
-	cte.Uri,
-	dbo.PadCode(cte.Target)
+	dbo.CleanString(cte.description),
+	cte.tier,
+	cte.uri,
+	dbo.PadCode(cte.target)
 from
 	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Indicator_List.json', single_clob) as j
 	cross apply openjson(BulkColumn)
