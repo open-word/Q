@@ -1,6 +1,18 @@
 use World;
 go
 
+create function CleanString (@String nvarchar(1000)) returns nvarchar(1000)
+as
+begin
+	declare @Result nvarchar(1000);
+
+	select 
+		@Result = replace(replace(replace(replace(replace(@String,'â€™',''''),'â€‘','-'),'€“','-'),'€”','-'),'â','');
+
+	return @Result;
+end
+go
+
 create function PadCode (@Code nvarchar(100)) returns nvarchar(100)
 as
 begin

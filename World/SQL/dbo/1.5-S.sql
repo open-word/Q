@@ -18,13 +18,13 @@ go
 
 insert S (SCode, SDescription, SUri, SRelease, SGoals, STargets, SIndicators)
 select
-	convert(nvarchar(20),cte.Code),
-	convert(nvarchar(261),cte.Description),
-	convert(nvarchar(35),cte.Uri),
-	convert(nvarchar(12),cte.Release),
-	replace(replace(replace(cte.Goal,'[',''),'"',''),']',''),
-	replace(replace(replace(cte.Target,'[',''),'"',''),']',''),
-	replace(replace(replace(cte.Indicator,'[',''),'"',''),']','')
+	cte.code,
+	dbo.CleanString(cte.description),
+	cte.uri,
+	cte.release,
+	replace(replace(replace(cte.goal,'[',''),'"',''),']',''),
+	replace(replace(replace(cte.target,'[',''),'"',''),']',''),
+	replace(replace(replace(cte.indicator,'[',''),'"',''),']','')
 from
 	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Series_List.json', single_clob) as j
 	cross apply openjson(BulkColumn)
