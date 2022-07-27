@@ -22,12 +22,12 @@ insert G (GCode, GTitle, GDescription, GUri, FCode)
 select
 	dbo.PadCode(cte.code),
 	cte.title,
-	dbo.CleanString(cte.description),
+	cte.description,
 	cte.uri,
 	'World'
 from
-	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Goal_List.json', single_clob) as j
-	cross apply openjson(BulkColumn)
+	api.Goal_List 
+	cross apply openjson(JsonString)
 with
 	(
 		code nvarchar(max),

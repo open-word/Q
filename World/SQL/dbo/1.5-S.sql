@@ -19,15 +19,15 @@ go
 insert S (SCode, SDescription, SUri, SRelease, SGoals, STargets, SIndicators)
 select
 	cte.code,
-	dbo.CleanString(cte.description),
+	cte.description,
 	cte.uri,
 	cte.release,
 	replace(replace(replace(cte.goal,'[',''),'"',''),']',''),
 	replace(replace(replace(cte.target,'[',''),'"',''),']',''),
 	replace(replace(replace(cte.indicator,'[',''),'"',''),']','')
 from
-	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Series_List.json', single_clob) as j
-	cross apply openjson(BulkColumn)
+	api.Series_List 
+	cross apply openjson(JsonString)
 with
 	(
 		code nvarchar(max),
