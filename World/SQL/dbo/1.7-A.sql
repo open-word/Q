@@ -14,34 +14,18 @@ go
 
 insert A(ACode, AName)
 select
-	format(cte.geoAreaCode,'D3'),
-	convert(nvarchar(92),cte.geoAreaName)
+	format(cte.geoAreaCode,'D3') geoAreaCode,
+	cte.geoAreaName
 from
-	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\GeoArea_List.json', single_clob) as j
-	cross apply openjson(BulkColumn)
+	api.GeoArea_List 
+	cross apply openjson(JsonString)
 with
 	(
 		geoAreaCode int,
 		geoAreaName nvarchar(max)
 	) as cte
 order by
-	geoAreaCode;
-
---https://unstats.un.org/SDGAPI/v1/sdg/GeoArea/List?allreleases=false
-
---select
---	BulkColumn
---from
---	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\GeoArea_List.json', single_clob) as j;
-
---select
---	value
---from
---	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\GeoArea_List.json', single_clob) as j
---	cross apply openjson(BulkColumn);
-
--- GeoArea_List contains more entities than GeoArea_Tree.
--- Nonetheless, let's extract the Type from GeoArea_Tree and update where we can.
+	cte.geoAreaCode;
 
 -- ---------------------------------------------------------------------------------------------
 -- AType
@@ -91,8 +75,8 @@ as
 		f.geoAreaName	FName,
 		f.type			FType
 	from 
-		openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\GeoArea_Tree.json', single_clob) t
-		outer apply openjson(t.BulkColumn) 
+		api.GeoArea_Tree t
+		outer apply openjson(JsonString) 
 			with (geoAreaCode nvarchar(3),geoAreaName nvarchar(100),type nvarchar(20), children nvarchar(max) as json) a
 			outer apply openjson(a.children)
 				with (geoAreaCode nvarchar(3),geoAreaName nvarchar(100),type nvarchar(20), children nvarchar(max) as json) b
@@ -139,7 +123,7 @@ from
 	A left join cte2 on A.AName = cte2.Name;
 go
 
---select * from A;
+--select * from A where ACode in (384,531,792);
 
 select '1.7'
 go

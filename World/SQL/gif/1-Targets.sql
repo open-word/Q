@@ -11,8 +11,8 @@ select
 into
 	gif.Targets
 from 
-	gif.Targets$
+	dbo.Targets$
 where
-	gif.Targets$.F1 is not null;
+	coalesce(dbo.Targets$.F1,'1') <> '1';
 
 select * from gif.Targets;

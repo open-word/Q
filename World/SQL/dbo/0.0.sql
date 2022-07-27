@@ -25,8 +25,8 @@ drop table if exists F;
 
 drop function if exists PadCode;
 
---dbcc shrinkfile (World_Log, 1);  
---go
+dbcc shrinkfile (World_Log, 1);  
+go
 
 select '0.0';
 go

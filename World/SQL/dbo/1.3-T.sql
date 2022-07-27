@@ -21,12 +21,12 @@ insert T (TCode, TTitle, TDescription, TUri, GCode)
 select
 	dbo.PadCode(cte.code),
 	cte.title,
-	dbo.CleanString(cte.description),
+	cte.description,
 	cte.uri,
 	dbo.PadCode(cte.goal)
 from
-	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Target_List.json', single_clob) as j
-	cross apply openjson(BulkColumn)
+	api.Target_List 
+	cross apply openjson(JsonString)
 with
 	(
 		code nvarchar(max),
