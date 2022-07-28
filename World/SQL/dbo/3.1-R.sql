@@ -1,9 +1,9 @@
 use World;
 go
 
-if not exists (select 1 from sys.indexes where name = 'IX_Records_GTISAY' and object_id = object_id('Records'))
+if not exists (select 1 from sys.indexes where name = 'IX_Records_GTISPY' and object_id = object_id('Records'))
 begin
-	create index IX_Records_GTISAY on Records (Goal, Target, Indicator, Series, GeoAreaCode, TimePeriod);
+	create index IX_Records_GTISPY on Records (Goal, Target, Indicator, Series, GeoAreaCode, TimePeriod);
 end
 go
 
@@ -14,20 +14,20 @@ create table R
 	TCode nvarchar(5),
 	ICode nvarchar(8),
 	SCode nvarchar(20),
-	ACode nvarchar(5),
+	PCode nvarchar(5),
 	YCode nvarchar(4),
-	constraint PK_R primary key (FCode, GCode, TCode, ICode, SCode, ACode, YCode),
-	constraint FK_R_FGTISAY foreign key (FCode, GCode, TCode, ICode, SCode, ACode, YCode) references FGTISAY (FCode, GCode, TCode, ICode, SCode, ACode, YCode)
+	constraint PK_R primary key (FCode, GCode, TCode, ICode, SCode, PCode, YCode),
+	constraint FK_R_FGTISPY foreign key (FCode, GCode, TCode, ICode, SCode, PCode, YCode) references FGTISPY (FCode, GCode, TCode, ICode, SCode, PCode, YCode)
 );
 
-insert R (FCode, GCode, TCode, ICode, SCode, ACode, YCode)
+insert R (FCode, GCode, TCode, ICode, SCode, PCode, YCode)
 select distinct
 	'World'						[FCode],
 	dbo.PadCode(Goal)			[GCode],
 	dbo.PadCode(Target)			[TCode],
 	dbo.PadCode(Indicator)		[ICode],
 	dbo.PadCode(Series)			[SCode],
-	format(GeoAreaCode,'D3')	[ACode],
+	format(GeoAreaCode,'D3')	[PCode],
 	TimePeriod					[YCode]
 from
 	Records
@@ -37,7 +37,7 @@ order by
 	[TCode],
 	[ICode],
 	[SCode],
-	[ACode],
+	[PCode],
 	[YCode];
 go
 

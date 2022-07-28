@@ -125,5 +125,5 @@ go
 
 --select * from A where ACode in (384,531,792);
 
-select '1.7'
+select '0.2'
 go

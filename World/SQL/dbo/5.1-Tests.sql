@@ -28,19 +28,19 @@ insert Tests (Code, Result) values ('TestFGTIWeight', iif(@TestFGTIWeight=1,'Pas
 declare @TestFGTISWeight bit = iif(abs((select sum(FGTISWeight) from FGTIS)-@TotalWeight) <= @WeightTolerance,1,0);
 insert Tests (Code, Result) values ('TestFGTISWeight', iif(@TestFGTISWeight=1,'Pass','Fail'));
 
-declare @TestFGTISAWeight bit = iif(abs((select sum(FGTISAWeight) from FGTISA)-@TotalWeight) <= @WeightTolerance,1,0);
-insert Tests (Code, Result) values ('TestFGTISAWeight', iif(@TestFGTISAWeight=1,'Pass','Fail'));
+declare @TestFGTISPWeight bit = iif(abs((select sum(FGTISPWeight) from FGTISP)-@TotalWeight) <= @WeightTolerance,1,0);
+insert Tests (Code, Result) values ('TestFGTISPWeight', iif(@TestFGTISPWeight=1,'Pass','Fail'));
 
-declare @TestFGTISAYWeight bit = iif(abs((select sum(FGTISAYWeight) from FGTISAY)-@TotalWeight) <= @WeightTolerance,1,0);
-insert Tests (Code, Result) values ('TestFGTISAYWeight', iif(@TestFGTISAYWeight=1,'Pass','Fail'));
+declare @TestFGTISPYWeight bit = iif(abs((select sum(FGTISPYWeight) from FGTISPY)-@TotalWeight) <= @WeightTolerance,1,0);
+insert Tests (Code, Result) values ('TestFGTISPYWeight', iif(@TestFGTISPYWeight=1,'Pass','Fail'));
 
 declare 
 	@CoveragePerRecords int = (select count(1) from (select distinct Goal,Target,Indicator,Series,GeoAreaCode,TimePeriod from Records) t),
 	@CoveragePerR int = (select count(1) from R),
-	@CoveragePerFGTISAY int = (select count(1) from FGTISAY where FGTISAYCoverage=1);
+	@CoveragePerFGTISPY int = (select count(1) from FGTISPY where FGTISPYCoverage=1);
 
-declare @TestFGTISAYCoverage bit = iif(@CoveragePerRecords = @CoveragePerR and @CoveragePerRecords = @CoveragePerFGTISAY, 1, 0);
-insert Tests (Code, Result) values ('TestFGTISAYCoverage', iif(@TestFGTISAYCoverage=1,'Pass','Fail'));
+declare @TestFGTISPYCoverage bit = iif(@CoveragePerRecords = @CoveragePerR and @CoveragePerRecords = @CoveragePerFGTISPY, 1, 0);
+insert Tests (Code, Result) values ('TestFGTISPYCoverage', iif(@TestFGTISPYCoverage=1,'Pass','Fail'));
 
 select * from Tests;
 
