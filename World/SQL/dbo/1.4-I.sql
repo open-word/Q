@@ -8,7 +8,6 @@ create table I
 	ITier nvarchar(1),
 	IUri nvarchar(25),
 	IPoints float default 1,
-	IInstance int,
 	TCode nvarchar(5),
 	constraint PK_I primary key (ICode),
 	--constraint UQ_I_IDescription unique (IDescription), -- Some indicators repeat (Description repeats, Code does not repeat).
@@ -48,19 +47,3 @@ insert I (ICode, IDescription, TCode) values ('11.c.M', 'Missing (there is no in
 
 select '1.4'
 go
-
---https://unstats.un.org/SDGAPI/v1/sdg/Series/List?allreleases=false
-
---select
---	BulkColumn
---from
---	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Indicator_List.json', single_clob) as j;
-
---select
---	value
---from
---	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Indicator_List.json', single_clob) as j
---	cross apply openjson(BulkColumn);
-
--- Some indicators repeat (Description repeats, Code does not repeat).
---select * from I where Description in (select Description from I group by Description having count(1) > 1);

@@ -60,16 +60,3 @@ update G set GName = 'Partnerships for the goals' where GCode = '17';
 
 select '1.2'
 go
-
---https://unstats.un.org/SDGAPI/v1/sdg/Series/List?allreleases=false
-
---select
---	BulkColumn
---from
---	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Goal_List.json', single_clob) as j;
-
---select
---	value
---from
---	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Goal_List.json', single_clob) as j
---	cross apply openjson(BulkColumn);
