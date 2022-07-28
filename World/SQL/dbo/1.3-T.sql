@@ -41,3 +41,4 @@ order by
 --select * from T;
 
 select '1.3'
+go
