@@ -22,7 +22,7 @@ create table R
 
 insert R (FCode, GCode, TCode, ICode, SCode, PCode, YCode)
 select distinct
-	'World'						[FCode],
+	'01'						[FCode],
 	dbo.PadCode(Goal)			[GCode],
 	dbo.PadCode(Target)			[TCode],
 	dbo.PadCode(Indicator)		[ICode],

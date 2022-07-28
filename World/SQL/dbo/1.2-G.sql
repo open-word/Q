@@ -24,7 +24,7 @@ select
 	cte.title,
 	cte.description,
 	cte.uri,
-	'World'
+	'01'
 from
 	api.Goal_List 
 	cross apply openjson(JsonString)

@@ -15,6 +15,13 @@ create table FGTISPY
 	FGTISPYWeightCoverage as FGTISPYWeight * FGTISPYCoverage,
 	constraint PK_FGTISPY primary key (FCode, GCode, TCode, ICode, SCode, PCode, YCode),
 	constraint FK_FGTISPY_FGTISP foreign key (FCode, GCode, TCode, ICode, SCode, PCode) references FGTISP (FCode, GCode, TCode, ICode, SCode, PCode),
+	-- for the convenience of tools
+	constraint FK_FGTISPY_F	foreign key (FCode) references F (FCode),
+	constraint FK_FGTISPY_G foreign key (GCode) references G (GCode),
+	constraint FK_FGTISPY_T foreign key (TCode) references T (TCode),
+	constraint FK_FGTISPY_I foreign key (ICode) references I (ICode),
+	constraint FK_FGTISPY_S foreign key (SCode) references S (SCode),
+	constraint FK_FGTISPY_P foreign key (PCode) references P (PCode),
 	constraint FK_FGTISPY_Y foreign key (YCode) references Y (YCode)
 );
 
