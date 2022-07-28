@@ -65,3 +65,16 @@ insert S (SCode, SDescription) values
 
 select '1.5'
 go
+
+--https://unstats.un.org/SDGAPI/v1/sdg/Series/List?allreleases=false
+
+--select
+--	BulkColumn
+--from
+--	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Series_List.json', single_clob) as j;
+
+--select
+--	value
+--from
+--	openrowset (bulk 'C:\github.com\open-word\Q\World\JSON\Series_List.json', single_clob) as j
+--	cross apply openjson(BulkColumn);
